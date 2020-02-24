@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slide from '../Slide/Slide'
+import Pagination from '../Pagination'
 
 class Slider extends Component {
     constructor() {
@@ -109,6 +110,10 @@ class Slider extends Component {
         );
     }
 
+    onPaginationItemClick = (currentPage) => () => {
+        this.setState({ currentPage });
+    };
+
     render() {
         let currentPos = this.state.currentPage * -100;
 
@@ -117,12 +122,16 @@ class Slider extends Component {
         };
 
         return (
-            <div className='slider'
-                 onTouchStart={this.onTouchStart}
-                 onTouchEnd={this.onTouchEnd}
-                 style={sliderStyle}>
+            <div className='slider'>
+                <div className='slider__content'
+                     onTouchStart={this.onTouchStart}
+                     onTouchEnd={this.onTouchEnd}
+                     style={sliderStyle}>
 
-                {this.renderSlides(this.sliderClasses)}
+                    {this.renderSlides(this.sliderClasses)}
+
+                </div>
+                <Pagination amount={this.maxPage + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
             </div>
         );
     }

@@ -1,15 +1,15 @@
 import React from 'react';
 import cn from 'classnames'
 
-const Item = ({ isActive, onClick }) => {
+const PaginationItem = ({ isActive, pageNumber, onClick }) => {
     const itemClasses = cn({
         pagination__item: true,
         'active': isActive
     });
 
     return (
-        <li className={itemClasses} onClick={onClick}/>
+        <li className={itemClasses} onClick={onClick(pageNumber)}/>
     );
 };
 
-export default Item;
+export default PaginationItem;
