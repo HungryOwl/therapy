@@ -15,6 +15,13 @@ class Slider extends Component {
         this.ellapsedTime = null;           // пройденное время
         this.startTime = null;              // время начального касания экрана
         this.swipeDirection = null;  // направление движения свайпа (вверх - top, вниз - bottom, вправо - right, влево - left)
+
+        this.onSwipe = {
+            left: () => console.log('left'),
+            right: () => console.log('right'),
+            top: () => console.log('top'),
+            bottom: () => console.log('bottom')
+        }
     }
 
     componentDidMount() {
@@ -22,7 +29,6 @@ class Slider extends Component {
     }
 
     onTouchStart = (evt) => {
-        evt.preventDefault();
         let touchObj = evt.changedTouches[0];
 
         this.distX = 0;
@@ -34,14 +40,7 @@ class Slider extends Component {
         this.startTime = new Date().getTime();
     };
 
-    onTouchMove = (evt) => {
-        // отключаем стандартную реакцию скроллинга
-        evt.preventDefault();
-    };
-
     onTouchEnd = (evt) => {
-        evt.preventDefault();
-
         let touchObj = evt.changedTouches[0];
         let isEllapsedTimeCorrect;
 
@@ -69,9 +68,10 @@ class Slider extends Component {
             this.swipeDirection = 'bottom';
         }
 
-        // callback(this.swipeDirection);
+        // console.log(this.swipeDirection);
 
-        console.log(this.swipeDirection );
+        this.onSwipe[this.swipeDirection]();
+
         this.swipeDirection = null;
     };
 
@@ -79,7 +79,6 @@ class Slider extends Component {
         return (
             <div className='slider'
                  onTouchStart={this.onTouchStart}
-                 onTouchMove={this.onTouchMove}
                  onTouchEnd={this.onTouchEnd}
             >
                 <Slide/>
