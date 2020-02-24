@@ -7,7 +7,7 @@ class Slider extends Component {
 
     render() {
         return (
-            <section className={`slide slide--${this.props.slideNumber}`}>
+            <section className={`slide slide--${this.props.slideType}`}>
                 Тело слайда
             </section>
         );
