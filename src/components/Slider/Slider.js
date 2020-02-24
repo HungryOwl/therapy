@@ -5,7 +5,11 @@ class Slider extends Component {
     constructor() {
         super();
 
-        this.state = { currentNumber: 0 };
+        this.state = { currentPage: 0 };
+
+        this.currentPage = 0;
+        this.minPage = 0;
+        this.maxPage = 2;
 
         this.startX = null;                 // координата Х начального касания экрана
         this.startY = null;                 // координата Y начального касания экрана
@@ -21,17 +25,33 @@ class Slider extends Component {
         this.onSwipe = {
             left: () => console.log('left'),
             right: () => console.log('right'),
-            top: () => console.log('top'),
-            bottom: () => console.log('bottom')
+            up: this.increaseCounter,
+            down: this.decreaseCounter
         };
 
-        this.maxPages = 3;
         this.sliderClasses = ['goals', 'therapy', 'details'];
     }
 
     componentDidMount() {
 
     }
+
+    get currentPage() {
+        let { currentPage } = this.state;
+        return currentPage;
+    }
+
+    set currentPage(value) {
+        this.setState({ currentPage: value });
+    }
+
+    increaseCounter = () => {
+        this.currentPage = (this.currentPage >= this.maxPage) ? this.maxPage : this.currentPage + 1;
+    };
+
+    decreaseCounter = () => {
+        this.currentPage = (this.currentPage <= this.minPage) ? this.minPage : this.currentPage - 1;
+    };
 
     onTouchStart = (evt) => {
         let touchObj = evt.changedTouches[0];
@@ -66,11 +86,11 @@ class Slider extends Component {
         }
 
         if (isEllapsedTimeCorrect && (this.distY < 0) && (Math.abs(this.distY) >= this.distYThreshold) && (Math.abs(this.distY) > Math.abs(this.distX)) && (Math.abs(this.distX) <= this.distXThreshold)) {
-            this.swipeDirection = 'top';
+            this.swipeDirection = 'up';
         }
 
         if (isEllapsedTimeCorrect && (this.distY > 0) && (this.distY >= this.distYThreshold) && (this.distY > Math.abs(this.distX)) && (Math.abs(this.distX) <= this.distXThreshold)) {
-            this.swipeDirection = 'bottom';
+            this.swipeDirection = 'down';
         }
 
         if (!this.swipeDirection) {
@@ -84,17 +104,24 @@ class Slider extends Component {
     renderSlides(slideArr) {
         return (
             slideArr.map((slideType, i) => (
-                <Slide key={i} slideType={slideType} />
+                <Slide key={i} slideType={slideType}/>
             ))
         );
     }
 
     render() {
+        let currentPos = this.state.currentPage * -100;
+
+        const sliderStyle = {
+            transform: `translateY(${currentPos}%)`,
+        };
+
         return (
             <div className='slider'
                  onTouchStart={this.onTouchStart}
                  onTouchEnd={this.onTouchEnd}
-            >
+                 style={sliderStyle}>
+
                 {this.renderSlides(this.sliderClasses)}
             </div>
         );
