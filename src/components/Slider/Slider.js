@@ -68,10 +68,11 @@ class Slider extends Component {
             this.swipeDirection = 'bottom';
         }
 
-        // console.log(this.swipeDirection);
+        if (!this.swipeDirection) {
+            return;
+        }
 
         this.onSwipe[this.swipeDirection]();
-
         this.swipeDirection = null;
     };
 
