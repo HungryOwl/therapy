@@ -26,6 +26,17 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader?resolve url']
             },
             {
+                test: /\.(png|jpeg|jpg|gif|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]?[contenthash]'
+                        }
+                    },
+                ],
+            },
+            {
                 test: /\.(ttf|eot|woff|woff2)$/i,
                 use: [
                     {
