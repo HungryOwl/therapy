@@ -6,9 +6,11 @@ class Slider extends Component {
     }
 
     render() {
+        const { children } = this.props;
+
         return (
             <section className={`slide slide--${this.props.slideType}`}>
-                Тело слайда
+                {children}
             </section>
         );
     }

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Slide from '../Slide/Slide'
 import Pagination from '../Pagination'
+import BarSlider from '../BarSlider/BarSlider'
 
 class Slider extends Component {
     constructor() {
         super();
 
-        this.state = { currentPage: 0 };
+        this.state = { currentPage: 2 };
 
-        this.currentPage = 0;
         this.minPage = 0;
         this.maxPage = 2;
 
@@ -30,11 +30,13 @@ class Slider extends Component {
             down: this.decreaseCounter
         };
 
+        this.sliderContent = {
+            0: 'первый слайд',
+            1: 'второй слайд',
+            2: <BarSlider/>
+        };
+
         this.sliderClasses = ['goals', 'therapy', 'details'];
-    }
-
-    componentDidMount() {
-
     }
 
     get currentPage() {
@@ -102,10 +104,10 @@ class Slider extends Component {
         this.swipeDirection = null;
     };
 
-    renderSlides(slideArr) {
+    renderSlides(slideArr, slideContent) {
         return (
             slideArr.map((slideType, i) => (
-                <Slide key={i} slideType={slideType}/>
+                <Slide key={i} slideType={slideType}>{slideContent[i]}</Slide>
             ))
         );
     }
@@ -128,8 +130,7 @@ class Slider extends Component {
                      onTouchEnd={this.onTouchEnd}
                      style={sliderStyle}>
 
-                    {this.renderSlides(this.sliderClasses)}
-
+                    {this.renderSlides(this.sliderClasses, this.sliderContent)}
                 </div>
                 <Pagination amount={this.maxPage + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
             </div>

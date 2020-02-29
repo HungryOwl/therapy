@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 
-class Bar extends Component {
+class DragBar extends Component {
     constructor(props) {
         super(props);
+
+        let { maxPage, currentPage } = this.props;
+
+        this.PIN_MAX_COORDS = 640; // максимальные координаты ползунка
+        this. PIN_MIN_COORDS = 0; // минимальные координаты ползунка
+
+        this.state = { pinCoord: this.PIN_MAX_COORDS / maxPage * currentPage };
     }
 
     renderBarValues(valuesArr) {
@@ -13,8 +20,32 @@ class Bar extends Component {
         );
     }
 
+    onTouchStart = (evt) => {
+        let touchObj = evt.changedTouches[0];
+
+        this.startX = touchObj.clientX;
+    };
+
+    onTouchMove = (evt) => {
+        let touchObj = evt.changedTouches[0];
+        console.log('onTouchMove');
+
+        // смещение
+        let shift = {
+            x: this.startX - touchObj.clientX
+        };
+
+        let pinCoord = touchObj.target.offsetLeft - shift.x;
+
+        pinCoord = (pinCoord <= this.PIN_MIN_COORDS) ? this.PIN_MIN_COORDS + 'px' : pinCoord;
+        pinCoord = (pinCoord >= this.PIN_MAX_COORDS) ? this.PIN_MAX_COORDS + 'px' : pinCoord;
+
+        this.setState({ pinCoord });
+        this.startX = touchObj.clientX;
+    };
+
     render() {
-        let position = `50%`;
+        let position = this.state.pinCoord + 'px';
 
         let pinStyles = {
             left: position
@@ -25,12 +56,12 @@ class Bar extends Component {
         };
 
         return (
-            <div className='bar'>
-                <div className='bar__line'>
-                    <div className='bar__pin' style={pinStyles}/>
-                    <div className='bar__value' style={valueStyles}/>
+            <div className='dragBar'>
+                <div className='dragBar__line'>
+                    <div className='dragBar__pin' style={pinStyles} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove}/>
+                    <div className='dragBar__value' style={valueStyles}/>
                 </div>
-                <div className='bar__checkpoints'>
+                <div className='dragBar__checkpoints'>
                     {this.renderBarValues(this.props.checkpoints)}
                 </div>
             </div>
@@ -38,4 +69,4 @@ class Bar extends Component {
     }
 }
 
-export default Bar;
+export default DragBar;
