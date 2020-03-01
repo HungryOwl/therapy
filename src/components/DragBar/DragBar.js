@@ -4,31 +4,34 @@ class DragBar extends Component {
     constructor(props) {
         super(props);
 
-        let { maxPage, currentPage } = this.props;
+        let { barWidth, maxPage, currentPage, onTouchEnd } = this.props;
 
-        this.PIN_MAX_COORDS = 640; // максимальные координаты ползунка
-        this. PIN_MIN_COORDS = 0; // минимальные координаты ползунка
+        this.PIN_MAX_COORDS = barWidth; // максимальные координаты ползунка
+        this.PIN_MIN_COORDS = 0;        // минимальные координаты ползунка
 
         this.state = { pinCoord: this.PIN_MAX_COORDS / maxPage * currentPage };
+        this.checkpointCoords = [];
+
+        Array(maxPage).fill('').forEach((item, i) => (
+            this.checkpointCoords[i] = (barWidth / maxPage) * (i + 1)
+        ));
     }
 
     renderBarValues(valuesArr) {
         return (
             valuesArr.map((value, i) => (
-                <span className='bar__checkpoint' key={i}>{value}</span>
+                <span className='dragBar__checkpoint' key={i}>{value}</span>
             ))
         );
     }
 
     onTouchStart = (evt) => {
         let touchObj = evt.changedTouches[0];
-
         this.startX = touchObj.clientX;
     };
 
     onTouchMove = (evt) => {
         let touchObj = evt.changedTouches[0];
-        console.log('onTouchMove');
 
         // смещение
         let shift = {
@@ -44,12 +47,29 @@ class DragBar extends Component {
         this.startX = touchObj.clientX;
     };
 
+    onTouchEnd = (evt) => {
+        let touchObj = evt.changedTouches[0];
+        let pinCoord = touchObj.target.offsetLeft;
+        let minDistance = pinCoord;
+        let currentPage = 0;
+
+        this.checkpointCoords.forEach((item, i) => {
+            let currentDistance = Math.abs(pinCoord - item);
+
+            currentPage = (currentDistance < minDistance) ? i + 1 : currentPage;
+            minDistance = (currentDistance < minDistance) ? currentDistance : minDistance;
+        });
+
+        console.log('currentPage', currentPage);
+
+        pinCoord = (currentPage === 0) ? 0 : this.checkpointCoords[currentPage - 1];
+        this.setState({ pinCoord });
+    };
+
     render() {
         let position = this.state.pinCoord + 'px';
 
-        let pinStyles = {
-            left: position
-        };
+        let pinStyles = { left: position };
 
         let valueStyles = {
             width: position
@@ -58,7 +78,12 @@ class DragBar extends Component {
         return (
             <div className='dragBar'>
                 <div className='dragBar__line'>
-                    <div className='dragBar__pin' style={pinStyles} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove}/>
+                    <div className='dragBar__pin'
+                         style={pinStyles}
+                         onTouchStart={this.onTouchStart}
+                         onTouchMove={this.onTouchMove}
+                         onTouchEnd={this.onTouchEnd}
+                    />
                     <div className='dragBar__value' style={valueStyles}/>
                 </div>
                 <div className='dragBar__checkpoints'>

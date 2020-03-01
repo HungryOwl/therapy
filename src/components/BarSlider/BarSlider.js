@@ -6,7 +6,7 @@ class BarSlider extends Component {
     constructor() {
         super();
 
-        this.state = { currentPage: 1 };
+        this.state = { currentPage: 2 };
 
         this.minPage = 0;
         this.maxPage = 2;
@@ -62,6 +62,7 @@ class BarSlider extends Component {
                     {this.renderSlides(this.sliderClasses, this.sliderContent)}
                 </div>
                 <DragBar
+                    barWidth='640'
                     checkpoints={this.sliderClasses}
                     maxPage={this.sliderClasses.length - 1}
                     currentPage={this.state.currentPage}
