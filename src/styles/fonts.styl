@@ -3,10 +3,9 @@ font-face($family, $path, $weight) {
     font-family: $family;
     font-weight: $weight;
 
-    src: url('{$path}.woff') format('woff'),
-         url('{$path}.woff2') format('woff2'),
-         url('{$path}.eot') format('eot'),
-         url('{$path}.eot') format('ttf');
+    src: url($path + '.woff') format('woff'),
+         url($path + '.eot') format('eot'),
+         url($path + '.ttf') format('ttf');
   }
 }
 
