@@ -6,15 +6,19 @@ class BarSlider extends Component {
     constructor() {
         super();
 
-        this.state = { currentPage: 2 };
-
-        this.minPage = 0;
+        this.initialPage = 0;
         this.maxPage = 2;
 
+        this.barWidth = 640;
+        this.PIN_MIN_COORDS = 0;
+        this.PIN_MAX_COORDS = this.barWidth;
+
+        this.state = { currentPage: this.initialPage , pinCoord: this.pageDistance * this.initialPage };
+
         this.sliderContent = {
-            0: 'первый диагональный слайд',
-            1: 'второй диагональный слайд',
-            2: 'третий'
+            0: 'первый горизонтальный слайд',
+            1: 'второй горизонтальный слайд',
+            2: 'третий горизонтальный слайд'
         };
 
         this.sliderClasses = ['1988', '2009', '2016'];
@@ -25,20 +29,42 @@ class BarSlider extends Component {
         return currentPage;
     }
 
-    set currentPage(value) {
-        this.setState({ currentPage: value });
+    get pageDistance() {
+        return this.PIN_MAX_COORDS / this.maxPage;
     }
 
-    increaseCounter = () => {
-        this.currentPage = (this.currentPage >= this.maxPage) ? this.maxPage : this.currentPage + 1;
+    onBarTouchStart = (evt) => {
+        let touchObj = evt.changedTouches[0];
+        this.startX = touchObj.clientX;
     };
 
-    decreaseCounter = () => {
-        this.currentPage = (this.currentPage <= this.minPage) ? this.minPage : this.currentPage - 1;
+    onBarTouchMove = (evt) => {
+        let touchObj = evt.changedTouches[0];
+
+        let shift = {
+            x: this.startX - touchObj.clientX
+        };
+
+        let pinCoord = touchObj.target.offsetLeft - shift.x;
+
+        pinCoord = (pinCoord <= this.PIN_MIN_COORDS) ? this.PIN_MIN_COORDS + 'px' : pinCoord;
+        pinCoord = (pinCoord >= this.PIN_MAX_COORDS) ? this.PIN_MAX_COORDS + 'px' : pinCoord;
+
+        let currentPage = Math.round(pinCoord / this.pageDistance);
+
+        this.setState({ currentPage, pinCoord });
+        this.startX = touchObj.clientX;
     };
 
-    onTouchEnd = (evt) => {
+    onBarTouchEnd = (evt) => {
+        let touchObj = evt.changedTouches[0];
+        let pinCoord = touchObj.target.offsetLeft;
+        let currentPage;
 
+        currentPage = Math.round(pinCoord / this.pageDistance);
+        pinCoord = this.pageDistance * currentPage;
+
+        this.setState({ currentPage, pinCoord });
     };
 
     renderSlides(slideArr) {
@@ -50,7 +76,7 @@ class BarSlider extends Component {
     }
 
     render() {
-        let currentPos = this.state.currentPage * -100;
+        let currentPos = this.currentPage * -100;
 
         const sliderStyle = {
             transform: `translateX(${currentPos}%)`,
@@ -65,7 +91,10 @@ class BarSlider extends Component {
                     barWidth='640'
                     checkpoints={this.sliderClasses}
                     maxPage={this.sliderClasses.length - 1}
-                    currentPage={this.state.currentPage}
+                    pinCoord={this.state.pinCoord}
+                    onBarTouchStart={this.onBarTouchStart}
+                    onBarTouchMove={this.onBarTouchMove}
+                    onBarTouchEnd={this.onBarTouchEnd}
                 />
             </div>
         );
