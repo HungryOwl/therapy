@@ -7,7 +7,8 @@ class BarSlider extends Component {
         super();
 
         this.initialPage = 0;
-        this.maxPage = 2;
+        this.sliderClasses = ['1988', '2009', '2016'];
+        this.maxPage = this.sliderClasses.length - 1;
 
         this.barWidth = 640;
         this.PIN_MIN_COORDS = 0;
@@ -20,8 +21,6 @@ class BarSlider extends Component {
             1: 'второй горизонтальный слайд',
             2: 'третий горизонтальный слайд'
         };
-
-        this.sliderClasses = ['1988', '2009', '2016'];
     }
 
     get currentPage() {
@@ -88,9 +87,7 @@ class BarSlider extends Component {
                     {this.renderSlides(this.sliderClasses, this.sliderContent)}
                 </div>
                 <DragBar
-                    barWidth='640'
                     checkpoints={this.sliderClasses}
-                    maxPage={this.sliderClasses.length - 1}
                     pinCoord={this.state.pinCoord}
                     onBarTouchStart={this.onBarTouchStart}
                     onBarTouchMove={this.onBarTouchMove}
