@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slide from '../Slide/Slide'
+import Goals from '../Slide/Goals'
 import Pagination from '../Pagination'
 import BarSlider from '../BarSlider/BarSlider'
 
@@ -7,7 +8,7 @@ class Slider extends Component {
     constructor() {
         super();
 
-        this.state = { currentPage: 2 };
+        this.state = { currentPage: 0 };
 
         this.minPage = 0;
         this.maxPage = 2;
@@ -31,7 +32,7 @@ class Slider extends Component {
         };
 
         this.sliderContent = {
-            0: 'первый слайд',
+            0: <Goals/>,
             1: 'второй слайд',
             2: <BarSlider sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
         };

@@ -1,10 +1,49 @@
 .slide
-  width 100%;
+  box-sizing: border-box;
   height 100%;
   color: white;
 
+  &__title
+    font-family: "Gotham Pro", sans-serif;
+    font-weight: 400;
+    color: #0d319c;
+    font-size: 50px;
+    line-height: 60px;
+
+  &__text
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #0d319c;
+
+    &--0
+      position: absolute;
+      top: 400px;
+      left: 225px;
+
+    &--1
+      position: absolute;
+      top: 510px;
+      left: 370px;
+
+    &--2
+      position: absolute;
+      top: 280px;
+      left: 625px;
+
+    &--3
+      position: absolute;
+      top: 490px;
+      left: 790px;
+
 .slide.slide--goals
-  background-color: #f8574a;
+  padding-top: 140px;
+  padding-left: 75px;
+  padding-right 75px;
+  background-color: #439afd;
+  background-image: url("../../assets/images/mountain.jpg");
+  background-size: cover;
+  background-position: center;
 
 .slide.slide--therapy
   background-color: lightpink;
