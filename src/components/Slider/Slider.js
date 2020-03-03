@@ -21,7 +21,7 @@ class Slider extends Component {
         this.timeThreshold = 300;           // контрольное время прохождения нужного расстояния
         this.ellapsedTime = null;           // пройденное время
         this.startTime = null;              // время начального касания экрана
-        this.swipeDirection = null;         // направление движения свайпа (вверх - top, вниз - bottom, вправо - right, влево - left)
+        this.swipeDirection = null;         // направление движения свайпа (вверх - up, вниз - down, вправо - right, влево - left)
 
         this.onSwipe = {
             left: () => console.log('left'),
