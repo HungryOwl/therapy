@@ -46,7 +46,7 @@ class BarSlider extends Component {
             /**
              * Получаем x-координату объекта в конкретном кадре анимации,
              * соответствующему входному значению параметра анимации progress
-             * @param  {number} progress конечное значение состояния анимации,
+             * @param {number} progress конечное значение состояния анимации,
              *                           пересчитанное нужной функцией изинга (вроде expo, circ и т.д.)
              */
             getCurrentXCoord: function(progress) {
@@ -109,14 +109,14 @@ class BarSlider extends Component {
      * @param  {number} timeFraction входное значение состояния анимации
      * @return {number}              выходное (рассчетное) значение состояния анимации
      */
-    circ(timeFraction) {
+    static circ(timeFraction) {
         return 1 - Math.sin(Math.acos(timeFraction));
     }
 
     circEaseOut = this.makeEaseOut(this.circ);
 
     /**
-     * Анимация, обратная заданной
+     * Анимация типа easeOut
      * @param  {number}   timing исходное состояние анимации
      * @return {Function} пересчитывает исходное состояние анимации (timing), получая итоговое состояние анимации (progress)
      */
