@@ -116,9 +116,8 @@ class BarSlider extends Component {
     circEaseOut = this.makeEaseOut(this.circ);
 
     /**
-     * Анимация типа easeOut
-     * @param  {number}   timing исходное состояние анимации
-     * @return {Function} пересчитывает исходное состояние анимации (timing), получая итоговое состояние анимации (progress)
+     * Анимация типа easeOut, принимает функцию расчёта времени и возрващает преобразованный вариант
+     * @return {Function} timing функция расчёта времени
      */
     makeEaseOut(timing) {
         return function(timeFraction) {
