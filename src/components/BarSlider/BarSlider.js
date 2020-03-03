@@ -109,7 +109,7 @@ class BarSlider extends Component {
      * @param  {number} timeFraction входное значение состояния анимации
      * @return {number}              выходное (рассчетное) значение состояния анимации
      */
-    static circ(timeFraction) {
+    circ(timeFraction) {
         return 1 - Math.sin(Math.acos(timeFraction));
     }
 
