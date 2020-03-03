@@ -81,7 +81,6 @@ class Slider extends Component {
         isEllapsedTimeCorrect = this.ellapsedTime <= this.timeThreshold;
 
         let isFingerMoved = Math.abs(this.distX) >= this.distXThreshold ^ Math.abs(this.distY) >= this.distYThreshold;
-
         let isHorizontalMove = Math.abs(this.distX) > Math.abs(this.distY);
 
         if (isEllapsedTimeCorrect && isFingerMoved) {
