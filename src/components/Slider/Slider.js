@@ -80,20 +80,16 @@ class Slider extends Component {
         this.ellapsedTime = new Date().getTime() - this.startTime;
         isEllapsedTimeCorrect = this.ellapsedTime <= this.timeThreshold;
 
-        if (isEllapsedTimeCorrect && (this.distX < 0) && (Math.abs(this.distX) >= this.distXThreshold) && (Math.abs(this.distX) > Math.abs(this.distY)) && (Math.abs(this.distY) <= this.distYThreshold)) {
-            this.swipeDirection = 'left';
-        }
+        let isFingerMoved = Math.abs(this.distX) >= this.distXThreshold ^ Math.abs(this.distY) >= this.distYThreshold;
 
-        if (isEllapsedTimeCorrect && (this.distX > 0) && (this.distX >= this.distXThreshold) && (this.distX > Math.abs(this.distY)) && (Math.abs(this.distY) <= this.distYThreshold)) {
-            this.swipeDirection = 'right';
-        }
+        let isHorizontalMove = Math.abs(this.distX) > Math.abs(this.distY);
 
-        if (isEllapsedTimeCorrect && (this.distY < 0) && (Math.abs(this.distY) >= this.distYThreshold) && (Math.abs(this.distY) > Math.abs(this.distX)) && (Math.abs(this.distX) <= this.distXThreshold)) {
-            this.swipeDirection = 'up';
-        }
-
-        if (isEllapsedTimeCorrect && (this.distY > 0) && (this.distY >= this.distYThreshold) && (this.distY > Math.abs(this.distX)) && (Math.abs(this.distX) <= this.distXThreshold)) {
-            this.swipeDirection = 'down';
+        if (isEllapsedTimeCorrect && isFingerMoved) {
+            if (isHorizontalMove) {
+                this.swipeDirection = (this.distX < 0) ? 'left' : 'right';
+            } else {
+                this.swipeDirection = (this.distY < 0) ? 'up' : 'down';
+            }
         }
 
         if (!this.swipeDirection) {
