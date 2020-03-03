@@ -33,7 +33,7 @@ class Slider extends Component {
         this.sliderContent = {
             0: 'первый слайд',
             1: 'второй слайд',
-            2: <BarSlider/>
+            2: <BarSlider sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
         };
 
         this.sliderClasses = ['goals', 'therapy', 'details'];
