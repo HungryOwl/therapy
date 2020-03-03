@@ -113,8 +113,6 @@ class BarSlider extends Component {
         return 1 - Math.sin(Math.acos(timeFraction));
     }
 
-    circEaseOut = this.makeEaseOut(this.circ);
-
     /**
      * Анимация типа easeOut, принимает функцию расчёта времени и возрващает преобразованный вариант
      * @return {Function} timing функция расчёта времени
@@ -124,6 +122,8 @@ class BarSlider extends Component {
             return 1 - timing(1 - timeFraction);
         }
     }
+
+    circEaseOut = this.makeEaseOut(this.circ);
 
     renderPinAnimation(options, context) {
         // Стартовое время
