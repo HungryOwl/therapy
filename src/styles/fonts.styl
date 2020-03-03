@@ -1,0 +1,12 @@
+font-face($family, $path, $weight) {
+  @font-face {
+    font-family: $family;
+    font-weight: $weight;
+
+    src: url($path + '.woff') format('woff'),
+         url($path + '.eot') format('eot'),
+         url($path + '.ttf') format('ttf');
+  }
+}
+
+font-face('Gotham Pro', '../assets/fonts/GothamPro', 400)
