@@ -146,9 +146,7 @@ class BarSlider extends Component {
             // timeFraction - от 0 до 1 - состояние анимации = текущее время - время старта в мс / длительность анимации
             let timeFraction = timeFromStart / options.duration;
 
-            // нет, здесь не нужно писать уродливый тернарник
-            if (timeFraction > 1) timeFraction = 1;
-            if (timeFraction < 0) timeFraction = 0;
+            timeFraction = context.limitToRange(timeFraction, 0, 1);
 
             // перерасчет значений timeFraction для получения новых значений,
             // соответствующих функциям типа circ, expo и т.д.
