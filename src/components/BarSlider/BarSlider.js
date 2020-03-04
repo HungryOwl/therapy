@@ -6,14 +6,16 @@ class BarSlider extends Component {
     constructor(props) {
         super(props);
 
-        const { sliderClasses, barWidth } = this.props;
+        const { sliderClasses } = this.props;
+
+        this.barWidth = this.props.barWidth;
 
         this.initialPage = 0;
         this.sliderClasses = sliderClasses;
         this.maxPage = this.sliderClasses.length - 1;
 
         this.PIN_MIN_COORDS = 0;
-        this.PIN_MAX_COORDS = barWidth;
+        this.PIN_MAX_COORDS = this.barWidth;
 
         this.state = {
             currentPage: this.initialPage,
@@ -140,7 +142,6 @@ class BarSlider extends Component {
              */
             options.isAnimationAvailable = false;
 
-            let pinCoord;
             let timeFromStart = time - start;
 
             // timeFraction - от 0 до 1 - состояние анимации = текущее время - время старта в мс / длительность анимации
@@ -153,7 +154,7 @@ class BarSlider extends Component {
             progress = options.timingCirc(timeFraction);
 
             // получаем нужные координаты пина и рисуем его на странице
-            pinCoord = options.getCurrentXCoord(progress, timeFraction);
+            let pinCoord = options.getCurrentXCoord(progress, timeFraction);
             context.setState({ pinCoord });
 
             if (timeFraction < 1) {
@@ -194,6 +195,7 @@ class BarSlider extends Component {
                     onBarTouchStart={this.onBarTouchStart}
                     onBarTouchMove={this.onBarTouchMove}
                     onBarTouchEnd={this.onBarTouchEnd}
+                    barWidth={this.barWidth}
                 />
             </div>
         );

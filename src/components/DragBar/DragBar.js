@@ -17,13 +17,12 @@ class DragBar extends Component {
         let { pinCoord, onBarTouchStart, onBarTouchMove, onBarTouchEnd } = this.props;
 
         let position = pinCoord + 'px';
+        let barStyles = { width: this.props.barWidth + 'px' };
         let pinStyles = { left: position };
-        let valueStyles = {
-            width: position
-        };
+        let valueStyles = { width: position };
 
         return (
-            <div className='dragBar'>
+            <div className='dragBar' style={barStyles}>
                 <div className='dragBar__line'>
                     <div className='dragBar__pin'
                          style={pinStyles}
