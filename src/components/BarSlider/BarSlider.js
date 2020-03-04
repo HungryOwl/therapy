@@ -78,8 +78,8 @@ class BarSlider extends Component {
 
         let pinCoord = touchObj.target.offsetLeft - shift.x;
 
-        pinCoord = (pinCoord <= this.PIN_MIN_COORDS) ? this.PIN_MIN_COORDS + 'px' : pinCoord;
-        pinCoord = (pinCoord >= this.PIN_MAX_COORDS) ? this.PIN_MAX_COORDS + 'px' : pinCoord;
+        pinCoord = (pinCoord <= this.PIN_MIN_COORDS) ? this.PIN_MIN_COORDS : pinCoord;
+        pinCoord = (pinCoord >= this.PIN_MAX_COORDS) ? this.PIN_MAX_COORDS : pinCoord;
 
         let currentPage = Math.round(pinCoord / this.pageDistance);
 
