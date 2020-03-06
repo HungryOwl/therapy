@@ -21,7 +21,7 @@ class Goals extends Component {
     renderBulbs(amount) {
         return (
             Array(amount).fill('').map((item, i) => (
-                <BulbGroup key={i} modificator={i}/>
+                <BulbGroup modificator={i} key={i}/>
             ))
         );
     }
@@ -31,7 +31,7 @@ class Goals extends Component {
             <h2 className='slide__title' key={1}>Всегда ли цели терапии СД2 на&nbsp;поверхности?</h2>,
             this.renderText(textArr),
             this.renderBulbs(4),
-            <Swipedown/>
+            <Swipedown key={2}/>
         ];
     }
 }
