@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Swipedown from './SwipeDown';
-import Bulb from '../Bulb/Bulb';
+import BulbGroup from '../BulbGroup/BulbGroup';
 
 const textArr = ['Гипогликемия', 'Осложнения СД', 'Цель по HbA1c', 'СС риски'];
-const bulbSizeArr = [28, 17, 54, 17];
+// const bulbSizeArr = [28, 17, 54, 17];
 
 class Goals extends Component {
     constructor(props) {
@@ -18,10 +18,10 @@ class Goals extends Component {
         );
     }
 
-    renderBulbs(sizeArr) {
+    renderBulbs(amount) {
         return (
-            sizeArr.map((size, i) => (
-                <Bulb size={size} key={i} modificator={i}/>
+            Array(amount).fill('').map((item, i) => (
+                <BulbGroup key={i} modificator={i}/>
             ))
         );
     }
@@ -30,7 +30,7 @@ class Goals extends Component {
         return [
             <h2 className='slide__title' key={1}>Всегда ли цели терапии СД2 на&nbsp;поверхности?</h2>,
             this.renderText(textArr),
-            <Bulb size={100} key={0} modificator={0}/>,
+            this.renderBulbs(4),
             <Swipedown/>
         ];
     }
