@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Swipedown from './SwipeDown';
 import BulbGroup from '../BulbGroup/BulbGroup';
 
 const textArr = ['Гипогликемия', 'Осложнения СД', 'Цель по HbA1c', 'СС риски'];
-// const bulbSizeArr = [28, 17, 54, 17];
 
 class Goals extends Component {
     constructor(props) {
@@ -28,10 +26,9 @@ class Goals extends Component {
 
     render() {
         return [
-            <h2 className='slide__title' key={1}>Всегда ли цели терапии СД2 на&nbsp;поверхности?</h2>,
+            <h2 className='slide__title'>Всегда ли цели терапии СД2 на&nbsp;поверхности?</h2>,
             this.renderText(textArr),
             this.renderBulbs(4),
-            <Swipedown key={2}/>
         ];
     }
 }

@@ -1,8 +1,14 @@
 import React from 'react';
+import cn from "classnames";
 
- const SwipeDown = (props) => {
+ const SwipeDown = ({ isActive }) => {
+     const swipeDownClasses = cn({
+         'swipeDown': true,
+         'swipeDown--active': isActive
+     });
+
     return (
-        <section className='swipeDown'>
+        <section className={swipeDownClasses}>
             <span className='swipeDown__text'>Листайте вниз</span>
         </section>
     );

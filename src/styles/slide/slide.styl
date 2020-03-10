@@ -5,7 +5,6 @@
   color: white;
 
   &__title
-    font-family: "Gotham Pro", sans-serif;
     font-weight: 400;
     color: #0d319c;
     font-size: 50px;
@@ -47,7 +46,30 @@
   background-position: center;
 
 .slide.slide--therapy
-  background-color: lightpink;
+  background-image: url("../../assets/images/ice-bg.png"),
+                    url("../../assets/images/therapy-bg.jpg");
+  background-size: auto, cover;
+  background-position: 50% 100px, center;
+  background-repeat: no-repeat;
+  background-color: #163ab0;
+  transition: background-position 0.6s ease;
+
+  .slide__title
+    display: inline-block;
+    margin-top: 280px;
+    padding-left: 220px;
+    padding-right: 220px;
+    text-align: center;
+    font-weight: 300;
+    color: white;
+    transform: translateY(0);
+    transition: transform 0.6s ease;
+
+.slide.slide--active.slide--therapy
+  background-position: 50% 0, center;
+
+  .slide__title
+    transform: translateY(-80px);
 
 .slide.slide--details
   background-color: dodgerblue;

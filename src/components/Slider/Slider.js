@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Slide from '../Slide/Slide'
 import Goals from '../Slide/Goals'
+import Therapy from '../Slide/Therapy'
 import Pagination from '../Pagination'
 import BarSlider from '../BarSlider/BarSlider'
+import Swipedown from "../Slide/SwipeDown";
+import cn from "classnames";
 
 class Slider extends Component {
     constructor() {
         super();
 
-        this.state = { currentPage: 0 };
+        this.state = { currentPage: 1 };
 
         this.minPage = 0;
         this.maxPage = 2;
@@ -33,7 +36,7 @@ class Slider extends Component {
 
         this.sliderContent = {
             0: <Goals/>,
-            1: 'второй слайд',
+            1: <Therapy/>,
             2: <BarSlider sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
         };
 
@@ -103,9 +106,15 @@ class Slider extends Component {
     renderSlides(slideArr, slideContent) {
         return (
             slideArr.map((slideType, i) => (
-                <Slide key={i} slideType={slideType}>{slideContent[i]}</Slide>
+                <Slide key={i} slideType={slideType} isActive={this.state.currentPage === i}>{slideContent[i]}</Slide>
             ))
         );
+    }
+
+    renderSwipedown() {
+        return (
+            <Swipedown isActive={this.state.currentPage < this.maxPage}/>
+        )
     }
 
     onPaginationItemClick = (currentPage) => () => {
@@ -128,6 +137,7 @@ class Slider extends Component {
 
                     {this.renderSlides(this.sliderClasses, this.sliderContent)}
                 </div>
+                {this.renderSwipedown()}
                 <Pagination amount={this.maxPage + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
             </div>
         );
