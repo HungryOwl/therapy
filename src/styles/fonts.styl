@@ -3,7 +3,8 @@ font-face($family, $path, $weight) {
     font-family: $family;
     font-weight: $weight;
 
-    src: url($path + '.ttf') format('ttf');
+    src: url($path + '.ttf') format('truetype'),
+         local('☺');
   }
 }
 
