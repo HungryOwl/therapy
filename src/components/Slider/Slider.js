@@ -11,7 +11,7 @@ class Slider extends Component {
     constructor() {
         super();
 
-        this.state = { currentPage: 1 };
+        this.state = { currentPage: 2 };
 
         this.minPage = 0;
         this.maxPage = 2;

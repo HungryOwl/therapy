@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slide from '../Slide/Slide'
 import DragBar from '../DragBar/DragBar'
+import PathogenesisLinks from "../Slide/PathogenesisLinks";
 
 class BarSlider extends Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class BarSlider extends Component {
         };
 
         this.sliderContent = {
-            0: 'первый горизонтальный слайд',
+            0: <PathogenesisLinks/>,
             1: 'второй горизонтальный слайд',
             2: 'третий горизонтальный слайд'
         };
