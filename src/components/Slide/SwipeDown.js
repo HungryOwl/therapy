@@ -1,11 +1,11 @@
 import React from 'react';
 import cn from "classnames";
 
- const SwipeDown = ({ isActive }) => {
-     const swipeDownClasses = cn({
+const SwipeDown = ({ isActive }) => {
+    const swipeDownClasses = cn({
          'swipeDown': true,
          'swipeDown--active': isActive
-     });
+    });
 
     return (
         <section className={swipeDownClasses}>
