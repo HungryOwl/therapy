@@ -15,7 +15,7 @@ class ChainLink extends Component {
 
         const imageClasses = cn({
             'chainLink__image': true,
-            [`chainLink__image--${this.props.modificator}}`]: this.props.modificator
+            [`chainLink__image--${this.props.modificator}`]: this.props.modificator
         });
 
         const contentClasses = cn({
