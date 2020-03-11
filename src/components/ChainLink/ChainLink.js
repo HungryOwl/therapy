@@ -7,10 +7,30 @@ class ChainLink extends Component {
     }
 
     render() {
+        const chainLinkClasses = cn({
+            'chainLink': true,
+            [`flex-${this.props.layout}`]: this.props.layout,
+            [`flex-align-${this.props.align}`]: this.props.align
+        });
+
+        const imageClasses = cn({
+            'chainLink__image': true,
+            [`chainLink__image--${this.props.modificator}}`]: this.props.modificator
+        });
+
+        const contentClasses = cn({
+            'chainLink__content': true,
+            [`flex-${this.props.contentLayout}`]: this.props.contentLayout,
+            [`flex-align-${this.props.contentAlign}`]: this.props.contentAlign
+        });
+
         return (
-            <article className='chainLink'>
-                <div className='chainLink__image'/>
-                <div className='chainLink__content'>
+            <article className={chainLinkClasses}>
+                <div className={imageClasses}>
+                    {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
+                </div>
+
+                <div className={contentClasses}>
                     <div className='chainLink__index'>{this.props.index}</div>
                     <div className='chainLink__text'>{this.props.text}</div>
                 </div>

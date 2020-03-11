@@ -1,0 +1,68 @@
+.chainLink
+  position: absolute;
+  display: flex;
+
+  &__image
+    position: relative
+    width: 84px;
+    height: @width;
+
+    &--musle::after
+      background-image: url("../../assets/images/musle.png");
+      background-size: 100%;
+
+    &--liver::after
+      background-image: url("../../assets/images/liver.png");
+      background-size: 60px auto;
+
+  &__image::before
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -42px;
+    margin-left: -42px;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background-color: #3f4381;
+
+  &__image::after
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  &__content
+    display: flex;
+    font-family: "Lato", sans-serif;
+
+  &__content.flex-column
+    padding-bottom: 15px;
+
+  &__content.flex-column-reverse
+    padding-top: 15px;
+
+  &__index
+    font-size: 36px;
+    line-height: @font-size;
+    font-weight: 600;
+
+  &__text
+    font-weight: 500;
+    font-size: 22px;
+
+  &__symbol
+    display: block;
+    position: relative;
+    height: 100%;
+    line-height: 74px;
+    font-family: "Lato", sans-serif;
+    font-size: 66px;
+    font-weight: 700;
+    text-align: center;
+    z-index: 1;
