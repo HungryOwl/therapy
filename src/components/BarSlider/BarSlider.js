@@ -80,14 +80,13 @@ class BarSlider extends Component {
     onBarTouchEnd = (evt) => {
         let touchObj = evt.changedTouches[0];
         let currentPinCoord = touchObj.target.offsetLeft;
-        let resultPage, resultPinCoord, pinDistance;
+        let resultPage, resultPinCoord;
 
         resultPage = Math.round(currentPinCoord / this.pageDistance);
         resultPinCoord = this.pageDistance * resultPage;
-        pinDistance = currentPinCoord - resultPinCoord;
-
+        
+        this.options.distance = currentPinCoord - resultPinCoord;
         this.options.initialPinCoord = currentPinCoord;
-        this.options.distance = pinDistance;
 
         this.renderPinAnimation();
     };
