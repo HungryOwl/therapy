@@ -32,11 +32,8 @@ class BarSlider extends Component {
         };
 
         this.options = {
+            // Стартовые координаты пина
             initialPinCoord: this.state.pinCoord,
-
-            // Свойства, нужные извне
-            currentPage: this.currentPage,
-            pageDistance: this.pageDistance,
 
             // Длительность анимации в мс
             duration: 300,
@@ -114,7 +111,7 @@ class BarSlider extends Component {
                 self.setState({ pinCoord });
             },
             onAnimationFinish() {
-                options.initialPinCoord = options.pageDistance * options.currentPage;
+                options.initialPinCoord = self.pageDistance * self.currentPage;
                 self.animation = null;
             }
         });
