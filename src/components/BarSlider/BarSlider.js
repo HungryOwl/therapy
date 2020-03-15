@@ -8,12 +8,11 @@ import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
 class BarSlider extends Component {
     constructor(props) {
         super(props);
-
         const { sliderClasses } = this.props;
 
         this.barWidth = this.props.barWidth;
 
-        this.initialPage = 0;
+        const { initialPage }  = this.props;
         this.sliderClasses = sliderClasses;
         this.maxPage = this.sliderClasses.length - 1;
 
@@ -21,8 +20,8 @@ class BarSlider extends Component {
         this.PIN_MAX_COORDS = this.barWidth;
 
         this.state = {
-            currentPage: this.initialPage,
-            pinCoord: this.pageDistance * this.initialPage
+            currentPage: initialPage,
+            pinCoord: this.pageDistance * initialPage
         };
 
         this.sliderContent = {
@@ -84,7 +83,7 @@ class BarSlider extends Component {
 
         resultPage = Math.round(currentPinCoord / this.pageDistance);
         resultPinCoord = this.pageDistance * resultPage;
-        
+
         this.options.distance = currentPinCoord - resultPinCoord;
         this.options.initialPinCoord = currentPinCoord;
 
