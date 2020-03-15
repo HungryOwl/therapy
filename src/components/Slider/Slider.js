@@ -4,8 +4,7 @@ import Goals from '../Slide/Goals'
 import Therapy from '../Slide/Therapy'
 import Pagination from '../Pagination'
 import BarSlider from '../BarSlider/BarSlider'
-import Swipedown from "../Slide/SwipeDown";
-import cn from "classnames";
+import Swipedown from '../Slide/SwipeDown';
 
 class Slider extends Component {
     constructor() {
@@ -23,7 +22,7 @@ class Slider extends Component {
         this.distXThreshold = 100;          // минимальное расстояние прохода пальца по оси Х для swipe
         this.distYThreshold  = 100;         // минимальное расстояние прохода пальца по оси Y для swipe
         this.timeThreshold = 300;           // контрольное время прохождения нужного расстояния
-        this.ellapsedTime = null;           // пройденное время
+        this.elapsedTime = null;           // пройденное время
         this.startTime = null;              // время начального касания экрана
         this.swipeDirection = null;         // направление движения свайпа (вверх - up, вниз - down, вправо - right, влево - left)
 
@@ -69,25 +68,25 @@ class Slider extends Component {
         this.startY = touchObj.pageY;
 
         // время контакта с поверхностью сенсора
-        this.startTime = new Date().getTime();
+        this.startTime = performance.now();
     };
 
     onTouchEnd = (evt) => {
         let touchObj = evt.changedTouches[0];
-        let isEllapsedTimeCorrect;
+        let isElapsedTimeCorrect;
 
         // пройденная дистанция
         this.distX = touchObj.pageX - this.startX;
         this.distY = touchObj.pageY - this.startY;
 
         // пройденное время
-        this.ellapsedTime = new Date().getTime() - this.startTime;
-        isEllapsedTimeCorrect = this.ellapsedTime <= this.timeThreshold;
+        this.elapsedTime = performance.now() - this.startTime;
+        isElapsedTimeCorrect = this.elapsedTime <= this.timeThreshold;
 
         let isFingerMoved = Math.abs(this.distX) >= this.distXThreshold ^ Math.abs(this.distY) >= this.distYThreshold;
         let isHorizontalMove = Math.abs(this.distX) > Math.abs(this.distY);
 
-        if (isEllapsedTimeCorrect && isFingerMoved) {
+        if (isElapsedTimeCorrect && isFingerMoved) {
             if (isHorizontalMove) {
                 this.swipeDirection = (this.distX < 0) ? 'left' : 'right';
             } else {
