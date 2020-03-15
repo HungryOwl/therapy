@@ -19,14 +19,15 @@ class ChainLink extends Component {
 
     render() {
         const chainLinkClasses = cn({
+            'chainLink': true,
+            [`chainLink--${this.props.modificator}`]: this.props.modificator,
+            [`${this.props.parentClass}__chainLink`]: this.props.parentClass
+        });
+
+        const boxClasses = cn({
             'chainLink__box': true,
             [`flex-${this.props.layout}`]: this.props.layout,
             [`flex-align-${this.props.align}`]: this.props.align
-        });
-
-        const imageClasses = cn({
-            'chainLink__image': true,
-            [`chainLink__image--${this.props.modificator}`]: this.props.modificator
         });
 
         const contentClasses = cn({
@@ -36,9 +37,9 @@ class ChainLink extends Component {
         });
 
         return (
-            <article className="chainLink">
-                <div className={chainLinkClasses}>
-                    <div className={imageClasses}>
+            <article className={chainLinkClasses}>
+                <div className={boxClasses}>
+                    <div className='chainLink__image'>
                         {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
                         {this.renderArrows(this.props.arrows)}
                     </div>

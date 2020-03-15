@@ -10,15 +10,6 @@
     width: 84px;
     height: @width;
 
-    &--musle::after
-      background-image: url("../../assets/images/musle.png");
-      background-size: 95%;
-      transform: rotate(-30deg);
-
-    &--liver::after
-      background-image: url("../../assets/images/liver.png");
-      background-size: 60px auto;
-
   &__image::before
     content: '';
     position: absolute;
@@ -40,6 +31,19 @@
     height: 100%;
     background-repeat: no-repeat;
     background-position: center;
+
+
+  &--musle &__image::after
+    background-image: url("../../assets/images/musle.png");
+    background-size: 95%;
+    transform: rotate(-30deg);
+
+  &--liver &__image::after
+    background-image: url("../../assets/images/liver.png");
+    background-size: 60px auto;
+
+  &--symbol &__content.flex-column
+    padding-bottom: 10px;
 
   &__content
     display: flex;
