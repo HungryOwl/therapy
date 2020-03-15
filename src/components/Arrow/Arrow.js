@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Arrow = ({ width, deg, shiftX, shiftY }) => {
+const Arrow = ({ length, deg, shiftX, shiftY }) => {
     let styles = {
-        width: width + 'px',
+        width: length + 'px',
         transform: `rotate(${deg}deg) translate(${shiftX}px, ${shiftY}px)`
     };
 

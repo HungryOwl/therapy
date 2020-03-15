@@ -6,27 +6,27 @@ const hyperglycemiaClass = 'hyperglycemiaTernary';
 const arrows = [
     [
         {
-            width: 60,
+            length: 60,
             deg: 0,
             shiftX: 50,
-            shiftY: 7
+            shiftY: 10
         }
     ],
     [
         {
-            width: 190,
+            length: 190,
             deg: 40,
             shiftX: 50,
             shiftY: -14
         },
         {
-            width: 190,
+            length: 190,
             deg: 140,
             shiftX: 50,
             shiftY: 14
         },
         {
-            width: 58,
+            length: 58,
             deg: 90,
             shiftX: 50,
             shiftY: 0
@@ -34,7 +34,7 @@ const arrows = [
     ],
     [
         {
-            width: 60,
+            length: 60,
             deg: -180,
             shiftX: 50,
             shiftY: -7
