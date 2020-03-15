@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Slide from '../Slide/Slide'
 import DragBar from '../DragBar/DragBar'
-import PathogenesisLinks from "../Slide/PathogenesisLinks";
+import PathogenesisLinks from '../Slide/PathogenesisLinks';
+import Animation from '../Animation/animation'
+import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
 
 class BarSlider extends Component {
     constructor(props) {
@@ -30,7 +32,6 @@ class BarSlider extends Component {
         };
 
         this.options = {
-            isAnimationAvailable: true,
             initialPinCoord: this.state.pinCoord,
 
             // Свойства, нужные извне
@@ -41,20 +42,7 @@ class BarSlider extends Component {
             duration: 300,
 
             // Расстояние, которое нужно пройти объекту анимации
-            distance: 0,
-
-            // Функция для пересчета исходного состояния анимации timefraction в итоговое progress
-            timingCirc: this.circEaseOut,
-
-            /**
-             * Получаем x-координату объекта в конкретном кадре анимации,
-             * соответствующему входному значению параметра анимации progress
-             * @param {number} progress конечное значение состояния анимации,
-             *                           пересчитанное нужной функцией изинга (вроде expo, circ и т.д.)
-             */
-            getCurrentXCoord: function(progress) {
-                return this.initialPinCoord - progress * this.distance;
-            }
+            distance: 0
         }
     }
 
@@ -99,74 +87,35 @@ class BarSlider extends Component {
 
         resultPage = Math.round(currentPinCoord / this.pageDistance);
         resultPinCoord = this.pageDistance * resultPage;
-
         pinDistance = currentPinCoord - resultPinCoord;
 
         this.options.initialPinCoord = currentPinCoord;
         this.options.distance = pinDistance;
 
-        this.renderPinAnimation(this.options, this);
+        this.renderPinAnimation();
     };
 
-    /**
-     * Рассчет параметра отрисовки объекта на экране с помощью функции дуги
-     * (progress = 1 - Math.sin(Math.acos(timeFraction)))
-     * @param  {number} timeFraction входное значение состояния анимации
-     * @return {number}              выходное (рассчетное) значение состояния анимации
-     */
-    circ(timeFraction) {
-        return 1 - Math.sin(Math.acos(timeFraction));
+    makeEaseOutAnimation() {
+        return new ReverseAnimation(new CircAnimation(new ReverseAnimation(new Animation(this.options.duration))));
     }
 
-    /**
-     * Анимация типа easeOut, принимает функцию расчёта времени и возрващает преобразованный вариант
-     * @return {Function} timing функция расчёта времени
-     */
-    makeEaseOut(timing) {
-        return function(timeFraction) {
-            return 1 - timing(1 - timeFraction);
-        }
-    }
+    renderPinAnimation() {
+        if (this.animation) return;
 
-    circEaseOut = this.makeEaseOut(this.circ);
+        this.animation = this.makeEaseOutAnimation();
 
-    renderPinAnimation(options, context) {
-        // Стартовое время
-        let start = performance.now();
-        let progress;
+        let self = this,
+            options = this.options;
 
-        // Запуск кадра анимации, time - время, прошедшее с начала загрузки страницы
-        requestAnimationFrame(function animateFrame(time) {
-            /**
-             * Состояние объекта, отвечающее за возможность начать проигрывать следующую анимацию
-             * @type {Boolean} false - нельзя запускать следующую анимацию
-             *                 true  - можно запускать следующую анимацию
-             */
-            options.isAnimationAvailable = false;
-
-            let timeFromStart = time - start;
-
-            // timeFraction - от 0 до 1 - состояние анимации = текущее время - время старта в мс / длительность анимации
-            let timeFraction = timeFromStart / options.duration;
-
-            timeFraction = context.limitToRange(timeFraction, 0, 1);
-
-            // перерасчет значений timeFraction для получения новых значений,
-            // соответствующих функциям типа circ, expo и т.д.
-            progress = options.timingCirc(timeFraction);
-
-            // получаем нужные координаты пина и рисуем его на странице
-            let pinCoord = options.getCurrentXCoord(progress, timeFraction);
-            context.setState({ pinCoord });
-
-            if (timeFraction < 1) {
-                requestAnimationFrame(animateFrame);
-            } else {
-                // После окончания анимации обновляем начальные координаты пина
+        this.animation.animate({
+            from: options.initialPinCoord,
+            to: options.initialPinCoord - options.distance,
+            onAnimationFrame(pinCoord) {
+                self.setState({ pinCoord });
+            },
+            onAnimationFinish() {
                 options.initialPinCoord = options.pageDistance * options.currentPage;
-
-                // Анимация объекта закончилась, можно начинать следующую
-                options.isAnimationAvailable = true;
+                self.animation = null;
             }
         });
     }
