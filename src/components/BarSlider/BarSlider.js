@@ -8,11 +8,10 @@ import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
 class BarSlider extends Component {
     constructor(props) {
         super(props);
-        const { sliderClasses } = this.props;
+        const { initialPage, sliderClasses } = this.props;
 
         this.barWidth = this.props.barWidth;
 
-        const { initialPage }  = this.props;
         this.sliderClasses = sliderClasses;
         this.maxPage = this.sliderClasses.length - 1;
 
