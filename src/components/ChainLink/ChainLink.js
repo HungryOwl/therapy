@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
+import Arrow from "../Arrow/Arrow";
 
 class ChainLink extends Component {
     constructor(props) {
         super(props);
     }
 
+    renderArrows(optionsArr) {
+        return (
+            optionsArr.map((options, i) => {
+                return (
+                    <Arrow {...options} key={i}/>
+                )
+            })
+        )
+    }
+
     render() {
         const chainLinkClasses = cn({
-            'chainLink': true,
+            'chainLink__box': true,
             [`flex-${this.props.layout}`]: this.props.layout,
             [`flex-align-${this.props.align}`]: this.props.align
         });
@@ -25,14 +36,17 @@ class ChainLink extends Component {
         });
 
         return (
-            <article className={chainLinkClasses}>
-                <div className={imageClasses}>
-                    {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
-                </div>
+            <article className="chainLink">
+                <div className={chainLinkClasses}>
+                    <div className={imageClasses}>
+                        {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
+                        {this.renderArrows(this.props.arrows)}
+                    </div>
 
-                <div className={contentClasses}>
-                    <div className='chainLink__index'>{this.props.index}</div>
-                    <div className='chainLink__text'>{this.props.text}</div>
+                    <div className={contentClasses}>
+                        <div className='chainLink__index'>{this.props.index}</div>
+                        <div className='chainLink__text'>{this.props.text}</div>
+                    </div>
                 </div>
             </article>
         );

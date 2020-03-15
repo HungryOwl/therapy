@@ -1,6 +1,9 @@
 .chainLink
-  position: absolute;
-  display: flex;
+  display: inline-block;
+  vertical-align: top;
+
+  &__box
+    display: flex;
 
   &__image
     position: relative
@@ -9,7 +12,8 @@
 
     &--musle::after
       background-image: url("../../assets/images/musle.png");
-      background-size: 100%;
+      background-size: 95%;
+      transform: rotate(-30deg);
 
     &--liver::after
       background-image: url("../../assets/images/liver.png");
@@ -42,7 +46,7 @@
     font-family: "Lato", sans-serif;
 
   &__content.flex-column
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 
   &__content.flex-column-reverse
     padding-top: 15px;
