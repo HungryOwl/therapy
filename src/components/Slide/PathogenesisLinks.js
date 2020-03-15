@@ -83,16 +83,6 @@ class PathogenesisLinks extends Component {
         super(props);
     }
 
-    renderChainLink(optionsArr) {
-        return (
-            optionsArr.map((options, i) => {
-                return (
-                    <ChainLink {...options} key={i}/>
-                )
-            })
-        )
-    }
-
     render() {
         return [
             <h3 className='slide__title'>Звенья патогенеза СД2</h3>,

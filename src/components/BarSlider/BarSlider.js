@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ValueRange } from '../utils'
 import Slide from '../Slide/Slide'
 import DragBar from '../DragBar/DragBar'
 import PathogenesisLinks from '../Slide/PathogenesisLinks';
@@ -8,12 +9,14 @@ import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
 class BarSlider extends Component {
     constructor(props) {
         super(props);
-        const { initialPage, sliderClasses } = this.props;
+        const { initialPage } = this.props;
 
         this.barWidth = this.props.barWidth;
+        this.sliderClasses = this.props.sliderClasses;
 
-        this.sliderClasses = sliderClasses;
-        this.maxPage = this.sliderClasses.length - 1;
+        this.pageRange = new ValueRange(0, this.sliderClasses.length - 1);
+        this.pinCoordsRange = new ValueRange(0, this.barWidth);
+
 
         this.PIN_MIN_COORDS = 0;
         this.PIN_MAX_COORDS = this.barWidth;
@@ -47,10 +50,9 @@ class BarSlider extends Component {
     }
 
     get pageDistance() {
-        return this.PIN_MAX_COORDS / this.maxPage;
+        return this.PIN_MAX_COORDS / this.pageRange.max;
     }
 
-    // @TODO вынести в отдельный файл типа utils
     limitToRange(value, lowerBound, upperBound) {
         if (value < lowerBound) return lowerBound;
         if (value > upperBound) return upperBound;
@@ -64,11 +66,8 @@ class BarSlider extends Component {
 
     onBarTouchMove = (evt) => {
         let touchObj = evt.changedTouches[0];
-
         let shiftX = this.startX - touchObj.clientX;
-        let pinCoord = touchObj.target.offsetLeft - shiftX;
-
-        pinCoord = this.limitToRange(pinCoord, this.PIN_MIN_COORDS, this.PIN_MAX_COORDS);
+        let pinCoord = this.pinCoordsRange.limit(touchObj.target.offsetLeft - shiftX);
         let currentPage = Math.round(pinCoord / this.pageDistance);
 
         this.setState({ currentPage, pinCoord });
