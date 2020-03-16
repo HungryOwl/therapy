@@ -1,14 +1,17 @@
-.hyperglycemiaTernary
-  width: 580px;
-  margin-left: 243px;
-  margin-top: 50px;
-  height: 350px;
+.hyperglycemia
+  &--ternary
+    width: 580px;
+    margin-left: 243px;
+    margin-top: 50px;
+    height: 350px;
 
   &__row
     display: flex;
+
+  &--ternary &__row
     padding-bottom: 4px;
 
-  &__row + &__row &__chainLink
+  &--ternary &__row + &__row .chainLink
     padding-bottom: 10px;
 
   &__text

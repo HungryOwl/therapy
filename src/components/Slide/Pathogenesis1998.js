@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ChainLink from "../ChainLink/ChainLink";
 
-const hyperglycemiaClass = 'hyperglycemiaTernary';
-
 const arrows = [
     [
         {
@@ -74,7 +72,6 @@ const chainLinks = [
 
 chainLinks.forEach((options, i) => {
     options.arrows = arrows[i];
-    options.parentClass = hyperglycemiaClass;
 });
 
 class Pathogenesis1998 extends Component {
@@ -85,14 +82,14 @@ class Pathogenesis1998 extends Component {
     render() {
         return [
             <h3 className='slide__title'>Звенья патогенеза СД2</h3>,
-            <article className={hyperglycemiaClass}>
-                <div className='hyperglycemiaTernary__row flex-jalign-center'>
+            <article className='hyperglycemia hyperglycemia--ternary'>
+                <div className='hyperglycemia__row flex-jalign-center'>
                     <ChainLink {...chainLinks[1]}/>
                 </div>
 
-                <div className='hyperglycemiaTernary__row flex-jalign-between flex-align-end'>
+                <div className='hyperglycemia__row flex-jalign-between flex-align-end'>
                     <ChainLink {...chainLinks[0]}/>
-                    <div className='hyperglycemiaTernary__text'>Гипергликемия</div>
+                    <div className='hyperglycemia__text'>Гипергликемия</div>
                     <ChainLink {...chainLinks[2]}/>
                 </div>
             </article>
