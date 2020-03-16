@@ -40,7 +40,8 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'β-клетки',
         index: 1,
-        modificators: 'symbolβ small',
+        img: 'symbolβ',
+        modificators: 'small',
         symbol: 'β',
         arrows: [mainArrows.down]
     },
@@ -58,7 +59,8 @@ const chainLinks = [
         contentLayout: 'column',
         contentAlign: 'end',
         text: 'Почки',
-        modificators: 'kidneys small',
+        img: 'kidneys',
+        modificators: 'small',
         index: 8,
         arrows: [mainArrows.right]
     },
@@ -68,7 +70,8 @@ const chainLinks = [
         contentLayout: 'column',
         contentAlign: 'start',
         innerText: 'Жировые <br> клетки',
-        modificators: 'lipid small',
+        img: 'lipid',
+        modificators: 'small',
         index: 4,
         arrows: [mainArrows.left]
     },
@@ -78,7 +81,8 @@ const chainLinks = [
         contentLayout: 'column',
         contentAlign: 'center',
         innerText: 'Головной <br> мозг',
-        modificators: 'brain small',
+        img: 'brain',
+        modificators: 'small',
         index: 7,
         arrows: [mainArrows.up]
     },
@@ -88,7 +92,8 @@ const chainLinks = [
         contentLayout: 'column',
         contentAlign: 'center',
         innerText: 'Печень',
-        modificators: 'liver small',
+        img: 'liver',
+        modificators: 'small',
         index: 6,
         arrows: [mainArrows.up]
     },
@@ -98,7 +103,8 @@ const chainLinks = [
         contentLayout: 'column',
         contentAlign: 'center',
         innerText: 'Мышцы',
-        modificators: 'musle small',
+        img: 'musle',
+        modificators: 'small',
         index: 5,
         arrows: [mainArrows.up]
     }

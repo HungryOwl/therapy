@@ -10,9 +10,7 @@ class ChainLink extends Component {
     renderArrows(optionsArr) {
         return (
             optionsArr.map((options, i) => {
-                return (
-                    <Arrow {...options} key={i}/>
-                )
+                return <Arrow {...options} key={i}/>
             })
         )
     }
@@ -30,10 +28,10 @@ class ChainLink extends Component {
     render() {
         let chainLinkClasses = {
             'chainLink': true,
-            [`${this.props.parentClass}__chainLink`]: this.props.parentClass
+            [`chainLink--${this.props.img}`]: this.props.img
         };
 
-        chainLinkClasses = cn(this.getModificators(this.props.modificators, chainLinkClasses));
+        chainLinkClasses = (this.props.modificators) ? cn(this.getModificators(this.props.modificators, chainLinkClasses)) : cn(chainLinkClasses);
 
         const boxClasses = cn({
             'chainLink__box': true,
@@ -50,10 +48,10 @@ class ChainLink extends Component {
         return (
             <article className={chainLinkClasses}>
                 <div className={boxClasses}>
-                    <div className='chainLink__image'>
+                    {(this.props.img || this.props.symbol) && <div className='chainLink__image'>
                         {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
                         {this.props.arrows && this.renderArrows(this.props.arrows)}
-                    </div>
+                    </div>}
 
                     <div className={contentClasses}>
                         {this.props.index && <div className='chainLink__index'>{this.props.index}</div>}

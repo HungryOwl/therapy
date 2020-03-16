@@ -47,7 +47,7 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'Мышцы',
         index: 2,
-        modificators: 'musle'
+        img: 'musle'
     },
     {
         layout: 'column-reverse',
@@ -56,7 +56,7 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'β-клетки',
         index: 1,
-        modificators: 'symbolβ',
+        img: 'symbolβ',
         symbol: 'β'
     },
     {
@@ -66,7 +66,7 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'Печень',
         index: 3,
-        modificators: 'liver'
+        img: 'liver'
     }
 ];
 
