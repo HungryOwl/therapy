@@ -78,7 +78,7 @@ chainLinks.forEach((options, i) => {
     options.parentClass = hyperglycemiaClass;
 });
 
-class PathogenesisLinks extends Component {
+class Pathogenesis1998 extends Component {
     constructor(props) {
         super(props);
     }
@@ -101,4 +101,4 @@ class PathogenesisLinks extends Component {
     }
 }
 
-export default PathogenesisLinks;
+export default Pathogenesis1998;

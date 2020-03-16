@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ValueRange } from '../utils'
 import Slide from '../Slide/Slide'
 import DragBar from '../DragBar/DragBar'
-import PathogenesisLinks from '../Slide/PathogenesisLinks';
+import Pathogenesis1998 from '../Slide/Pathogenesis1998';
 import Animation from '../Animation/animation'
 import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
 
@@ -23,7 +23,7 @@ class BarSlider extends Component {
         };
 
         this.sliderContent = {
-            0: <PathogenesisLinks/>,
+            0: <Pathogenesis1998/>,
             1: 'второй горизонтальный слайд',
             2: 'третий горизонтальный слайд'
         };
