@@ -17,10 +17,6 @@ class BarSlider extends Component {
         this.pageRange = new ValueRange(0, this.sliderClasses.length - 1);
         this.pinCoordsRange = new ValueRange(0, this.barWidth);
 
-
-        this.PIN_MIN_COORDS = 0;
-        this.PIN_MAX_COORDS = this.barWidth;
-
         this.state = {
             currentPage: initialPage,
             pinCoord: this.pageDistance * initialPage
@@ -50,7 +46,7 @@ class BarSlider extends Component {
     }
 
     get pageDistance() {
-        return this.PIN_MAX_COORDS / this.pageRange.max;
+        return this.pinCoordsRange.max / this.pageRange.max;
     }
 
     onBarTouchStart = (evt) => {
@@ -71,10 +67,9 @@ class BarSlider extends Component {
     onBarTouchEnd = (evt) => {
         let touchObj = evt.changedTouches[0];
         let currentPinCoord = touchObj.target.offsetLeft;
-        let resultPage, resultPinCoord;
 
-        resultPage = Math.round(currentPinCoord / this.pageDistance);
-        resultPinCoord = this.pageDistance * resultPage;
+        let resultPage = Math.round(currentPinCoord / this.pageDistance);
+        let resultPinCoord = this.pageDistance * resultPage;
 
         this.options.distance = currentPinCoord - resultPinCoord;
         this.options.initialPinCoord = currentPinCoord;
