@@ -53,12 +53,6 @@ class BarSlider extends Component {
         return this.PIN_MAX_COORDS / this.pageRange.max;
     }
 
-    limitToRange(value, lowerBound, upperBound) {
-        if (value < lowerBound) return lowerBound;
-        if (value > upperBound) return upperBound;
-        return value;
-    }
-
     onBarTouchStart = (evt) => {
         let touchObj = evt.changedTouches[0];
         this.startX = touchObj.clientX;
