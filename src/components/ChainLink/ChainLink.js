@@ -17,12 +17,23 @@ class ChainLink extends Component {
         )
     }
 
+    getModificators(modString, obj) {
+        let modArr = modString.split(' ');
+
+        modArr.forEach((mod) => (
+            obj[`chainLink--${mod}`] = true
+        ));
+
+        return obj;
+    }
+
     render() {
-        const chainLinkClasses = cn({
+        let chainLinkClasses = {
             'chainLink': true,
-            [`chainLink--${this.props.modificator}`]: this.props.modificator,
             [`${this.props.parentClass}__chainLink`]: this.props.parentClass
-        });
+        };
+
+        chainLinkClasses = cn(this.getModificators(this.props.modificators, chainLinkClasses));
 
         const boxClasses = cn({
             'chainLink__box': true,
@@ -45,8 +56,9 @@ class ChainLink extends Component {
                     </div>
 
                     <div className={contentClasses}>
-                        <div className='chainLink__index'>{this.props.index}</div>
-                        <div className='chainLink__text'>{this.props.text}</div>
+                        {this.props.index && <div className='chainLink__index'>{this.props.index}</div>}
+                        {this.props.text && <div className='chainLink__text'>{this.props.text}</div>}
+                        {this.props.innerText && <div dangerouslySetInnerHTML={{__html: this.props.innerText}} className='chainLink__text'/>}
                     </div>
                 </div>
             </article>

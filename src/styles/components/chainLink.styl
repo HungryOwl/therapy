@@ -1,3 +1,9 @@
+chainLinkSize = 84px;
+chainLinkOffset = - chainLinkSize / 2;
+
+smallChainLinkSize = 60px;
+smallChainLinkOffset = - smallChainLinkSize / 2;
+
 .chainLink
   display: inline-block;
   vertical-align: top;
@@ -7,7 +13,11 @@
 
   &__image
     position: relative
-    width: 84px;
+    width: chainLinkSize;
+    height: @width;
+
+  &--small &__image
+    width: smallChainLinkSize;
     height: @width;
 
   &__image::before
@@ -15,12 +25,18 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -42px;
-    margin-left: -42px;
-    width: 84px;
-    height: 84px;
+    margin-top: chainLinkOffset;
+    margin-left: chainLinkOffset;
+    width: chainLinkSize;
+    height: @width;
     border-radius: 50%;
     background-color: #3f4381;
+
+  &--small &__image::before
+    margin-top: smallChainLinkOffset;
+    margin-left: smallChainLinkOffset;
+    width: smallChainLinkSize;
+    height: @width;
 
   &__image::after
     content: '';
@@ -63,6 +79,13 @@
     font-weight: 500;
     font-size: 22px;
 
+  &--small &__text
+    font-size: 19px;
+
+  &__box.flex-row-reverse &__text
+    text-align: right;
+    padding-right: 14px;
+
   &__symbol
     display: block;
     position: relative;
@@ -73,3 +96,7 @@
     font-weight: 700;
     text-align: center;
     z-index: 1;
+
+  &--small &__symbol
+    font-size: 36px;
+    line-height: smallChainLinkSize;

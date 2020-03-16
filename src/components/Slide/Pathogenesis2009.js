@@ -44,13 +44,11 @@ const arrows = [
 
 const chainLinks = [
     {
-        layout: 'column-reverse',
-        align: 'end',
-        contentLayout: 'column',
-        contentAlign: 'center',
-        text: 'Мышцы',
-        index: 2,
-        modificators: 'musle'
+        layout: 'row-reverse',
+        align: 'center',
+        innerText: 'Инкретиновый <br> эффект',
+        modificators: 'small',
+        symbol: '2'
     },
     {
         layout: 'column-reverse',
@@ -78,27 +76,28 @@ chainLinks.forEach((options, i) => {
     options.parentClass = hyperglycemiaClass;
 });
 
-class Pathogenesis1998 extends Component {
+class Pathogenesis2009 extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return [
-            <h3 className='slide__title'>Звенья патогенеза СД2</h3>,
+            <h3 className='slide__title'>Смертельный октет</h3>,
             <article className={hyperglycemiaClass}>
-                <div className='hyperglycemiaTernary__row flex-jalign-center'>
-                    <ChainLink {...chainLinks[1]}/>
+                <div className='hyperglycemiaTernary__row'>
+                    <ChainLink {...chainLinks[0]}/>
                 </div>
 
                 <div className='hyperglycemiaTernary__row flex-jalign-between flex-align-end'>
-                    <ChainLink {...chainLinks[0]}/>
                     <div className='hyperglycemiaTernary__text'>Гипергликемия</div>
-                    <ChainLink {...chainLinks[2]}/>
+                </div>
+                <div className='hyperglycemiaTernary__row flex-jalign-between flex-align-end'>
+
                 </div>
             </article>
         ];
     }
 }
 
-export default Pathogenesis1998;
+export default Pathogenesis2009;
