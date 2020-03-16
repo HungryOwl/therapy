@@ -72,46 +72,76 @@ const chainLinks = [
     },
     {
         layout: 'column-reverse',
-        align: '',
         contentLayout: 'column',
         contentAlign: 'end',
-        innerText: 'Инкретинового <br> эффекта',
+        innerText: '↓ инкретинового <br> эффекта',
         modificators: 'small',
         index: 2,
         arrows: []
     },
     {
-        layout: 'column',
+        layout: 'column-reverse',
+        contentLayout: 'column',
+        contentAlign: 'start',
+        text: 'Дефект α-клеток',
+        modificators: 'small',
+        index: 3,
+        arrows: []
+    },
+    {
+        layout: 'row-reverse',
         align: 'center',
         contentLayout: 'column',
         contentAlign: 'center',
-        innerText: 'Головной <br> мозг',
+        innerText: 'Почки',
+        img: 'kidneys',
+        modificators: 'small',
+        index: 11,
+        arrows: []
+    },
+    {
+        layout: 'row',
+        align: 'center',
+        contentLayout: 'column',
+        contentAlign: 'start',
+        text: 'Головной мозг',
         img: 'brain',
         modificators: 'small',
         index: 7,
-        arrows: [mainArrows.up]
+        arrows: []
     },
     {
-        layout: 'column',
+        layout: 'row',
         align: 'center',
         contentLayout: 'column',
-        contentAlign: 'center',
-        innerText: 'Печень',
+        contentAlign: 'start',
+        text: 'Печень',
         img: 'liver',
         modificators: 'small',
         index: 6,
-        arrows: [mainArrows.up]
+        arrows: []
     },
     {
-        layout: 'column',
+        layout: 'row',
         align: 'center',
         contentLayout: 'column',
-        contentAlign: 'center',
-        innerText: 'Мышцы',
+        contentAlign: 'start',
+        text: 'Мышцы',
         img: 'musle',
         modificators: 'small',
         index: 5,
-        arrows: [mainArrows.up]
+        arrows: []
+    },
+    {
+        layout: 'row',
+        align: 'center',
+        contentLayout: 'column',
+        contentAlign: 'start',
+        text: 'Жировые клетки',
+        img: 'lipid',
+        modificators: 'small',
+        index: 4,
+        arrows: []
     }
 ];
 
@@ -134,13 +164,34 @@ class Pathogenesis2016 extends Component {
                     <ChainLink {...chainLinks[2]}/>
                 </div>
 
-                <div className='hyperglycemia__column'>
+                <div className='hyperglycemia__column flex-align-center'>
                     <ChainLink {...chainLinks[3]}/>
-                    <ChainLink {...chainLinks[4]}/>
+
+                    <section className='hyperglycemia__row'>
+                        <ChainLink {...chainLinks[4]}/>
+                        <ChainLink {...chainLinks[5]}/>
+                    </section>
+
+                    <section className='hyperglycemia__row'>
+                        <div className='hyperglycemia__text hyperglycemia__text--amylin'>
+                            <span>↓ глюкагон</span>
+                            <Arrow length={12} deg={90} shiftX={20} />
+                        </div>
+                    </section>
+
+                    <div className='hyperglycemia__text'>Гипергликемия</div>
+                    <ChainLink {...chainLinks[6]}/>
                 </div>
 
                 <div className='hyperglycemia__column'>
+                    <ChainLink {...chainLinks[7]}/>
 
+                    <section className='hyperglycemia__column hyperglycemia__column--group'>
+                        <div className='hyperglycemia__text hyperglycemia__text--small'>Инсулинорезистентность</div>
+                        <ChainLink {...chainLinks[8]}/>
+                        <ChainLink {...chainLinks[9]}/>
+                        <ChainLink {...chainLinks[10]}/>
+                    </section>
                 </div>
             </article>
         ];
