@@ -1,0 +1,48 @@
+@import './hyperglycemia__globals.styl'
+@import '../chainLink/__.styl'
+
+.hyperglycemia
+  &--ternary
+    width: 580px;
+    margin-left: 243px;
+    margin-top: 50px;
+    height: 350px;
+
+  &--octet
+    width: 750px;
+    margin-left: 160px;
+
+  &__row
+    display: flex;
+
+  &--ternary &__row
+    padding-bottom: 4px;
+
+  &--octet &__row
+    padding-bottom: 34px;
+
+  &--octet &__row:first-child
+    padding-left: 30px;
+    padding-right: 110px;
+
+  &--ternary &__row + &__row .chainLink
+    padding-bottom: 10px;
+
+  &--octet &__row.flex-align-start .chainLink
+    margin-top: smallChainLinkOffsetY
+
+  &__text
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    border: textBorderSize solid white;
+
+  &--ternary &__text
+    padding: 34px 56px;
+    font-size: 19px;
+    line-height: @font-size;
+
+  &--octet &__text
+    padding-left: 105px;
+    padding-right: 105px
+    font-size: 25px;
+    line-height: octetTextLineHeight;

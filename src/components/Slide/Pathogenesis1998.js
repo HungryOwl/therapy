@@ -56,7 +56,7 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'β-клетки',
         index: 1,
-        modificators: 'symbol',
+        modificators: 'symbolβ',
         symbol: 'β'
     },
     {

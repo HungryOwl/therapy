@@ -1,8 +1,4 @@
-chainLinkSize = 84px;
-chainLinkOffset = - chainLinkSize / 2;
-
-smallChainLinkSize = 60px;
-smallChainLinkOffset = - smallChainLinkSize / 2;
+@import "../chainLink/chainLink__globals.styl"
 
 .chainLink
   display: inline-block;
@@ -49,29 +45,62 @@ smallChainLinkOffset = - smallChainLinkSize / 2;
     background-position: center;
 
   &--musle &__image::after
-    background-image: url("../../assets/images/musle.png");
+    background-image: url("../../../assets/images/musle.png");
     background-size: 95%;
     transform: rotate(-30deg);
 
   &--liver &__image::after
-    background-image: url("../../assets/images/liver.png");
+    background-image: url("../../../assets/images/liver.png");
     background-size: 60px auto;
 
-  &--symbol &__content.flex-column
-    padding-bottom: 10px;
+  &--kidneys &__image::after
+    background-image: url("../../../assets/images/kidneys.png");
+    background-size: 60px auto;
+
+  &--small&--musle &__image::after
+    background-image: url("../../../assets/images/musle.png");
+    background-size: 95%;
+    transform: rotate(-30deg);
+
+  &--small&--liver &__image::after
+    background-image: url("../../../assets/images/liver.png");
+    background-size: 44px auto;
+
+  &--small&--kidneys &__image::after
+    background-image: url("../../../assets/images/kidneys.png");
+    background-size: 40px auto;
+
+  &--small&--lipid &__image::after
+    background-image: url("../../../assets/images/lipid.png");
+    background-size: 40px auto;
 
   &__content
     display: flex;
     font-family: "Lato", sans-serif;
 
-  &__content.flex-column
+  &__box.flex-column &__content.flex-column
+    padding-top: 20px;
+
+  &__box.flex-column-reverse &__content.flex-column
     padding-bottom: 20px;
 
   &__content.flex-column-reverse
     padding-top: 15px;
 
+  &__box.flex-row &__content
+    padding-left: 14px;
+
+  &__box.flex-row-reverse &__content
+    padding-right: 14px;
+
+  &__box.flex-align-start &__content
+    padding-top: contentOffsetY
+
+  &&--symbolβ &__content.flex-column
+    padding-bottom: 10px;
+
   &__index
-    font-size: 36px;
+    font-size: indexFontSize;
     line-height: @font-size;
     font-weight: 600;
 
@@ -80,14 +109,11 @@ smallChainLinkOffset = - smallChainLinkSize / 2;
     font-size: 22px;
 
   &--small &__text
-    font-size: 19px;
-
-  &__box.flex-row &__text
-    padding-left: 14px;
+    font-size: 20px;
+    line-height: 24px;
 
   &__box.flex-row-reverse &__text
     text-align: right;
-    padding-right: 14px;
 
   &__symbol
     display: block;
@@ -103,3 +129,6 @@ smallChainLinkOffset = - smallChainLinkSize / 2;
   &--small &__symbol
     font-size: 36px;
     line-height: smallChainLinkSize;
+
+  &--symbolβ &__symbol
+    font-size: 66px;

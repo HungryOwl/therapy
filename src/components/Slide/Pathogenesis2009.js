@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
 import ChainLink from "../ChainLink/ChainLink";
 
-
-
 const arrows = [
     [
         {
-            length: 33,
+            length: 24,
             deg: 90,
             shiftX: 30
         }
     ],
     [
         {
-            length: 33,
+            length: 24,
             deg: 90,
             shiftX: 30
         }
     ],
     [
         {
-            length: 33,
+            length: 24,
             deg: 90,
+            shiftX: 30
+        }
+    ],
+    [
+        {
+            length: 24,
+            shiftX: 30
+        }
+    ],
+    [
+        {
+            length: 24,
+            deg: 180,
             shiftX: 30
         }
     ]
@@ -42,7 +53,7 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'β-клетки',
         index: 1,
-        modificators: 'symbol small',
+        modificators: 'symbolβ small',
         symbol: 'β'
     },
     {
@@ -51,6 +62,24 @@ const chainLinks = [
         innerText: 'Дефект <br> α-клеток',
         modificators: 'small',
         symbol: 3
+    },
+    {
+        layout: 'row-reverse',
+        align: 'start',
+        contentLayout: 'column',
+        contentAlign: 'end',
+        text: 'Почки',
+        modificators: 'kidneys small',
+        index: 8
+    },
+    {
+        layout: 'row',
+        align: 'start',
+        contentLayout: 'column',
+        contentAlign: 'start',
+        innerText: 'Жировые <br> клетки',
+        modificators: 'lipid small',
+        index: 3
     }
 ];
 
@@ -65,20 +94,19 @@ class Pathogenesis2009 extends Component {
     }
 
     render() {
-
-        console.log(chainLinks[0]);
-
         return [
             <h3 className='slide__title'>Смертельный октет</h3>,
             <article className='hyperglycemia hyperglycemia--octet'>
-                <div className='hyperglycemia__row flex-align-end'>
+                <div className='hyperglycemia__row flex-jalign-between flex-align-end'>
                     <ChainLink {...chainLinks[0]}/>
                     <ChainLink {...chainLinks[1]}/>
                     <ChainLink {...chainLinks[2]}/>
                 </div>
 
-                <div className='hyperglycemia__row flex-jalign-between flex-align-end'>
+                <div className='hyperglycemia__row flex-jalign-between flex-align-start'>
+                    <ChainLink {...chainLinks[3]}/>
                     <div className='hyperglycemia__text'>Гипергликемия</div>
+                    <ChainLink {...chainLinks[4]}/>
                 </div>
                 <div className='hyperglycemia__row flex-jalign-between flex-align-end'>
 
