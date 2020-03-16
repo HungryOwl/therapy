@@ -1,63 +1,27 @@
 import React, { Component } from 'react';
 import ChainLink from "../ChainLink/ChainLink";
 
-const arrows = [
-    [
-        {
-            length: 24,
-            deg: 90,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            deg: 90,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            deg: 90,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            deg: 180,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            deg: 270,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            deg: 270,
-            shiftX: 30
-        }
-    ],
-    [
-        {
-            length: 24,
-            deg: 270,
-            shiftX: 30
-        }
-    ]
-];
+const mainArrows = {
+    up:  {
+        length: 24,
+        deg: 270,
+        shiftX: 30
+    },
+    down: {
+        length: 24,
+        deg: 90,
+        shiftX: 30
+    },
+    left: {
+        length: 24,
+        deg: 180,
+        shiftX: 30
+    },
+    right: {
+        length: 24,
+        shiftX: 30
+    },
+};
 
 const chainLinks = [
     {
@@ -65,7 +29,9 @@ const chainLinks = [
         align: 'center',
         innerText: 'Инкретиновый <br> эффект',
         modificators: 'small',
-        symbol: 2
+        symbol: 2,
+        arrows: [mainArrows.down]
+
     },
     {
         layout: 'column-reverse',
@@ -75,14 +41,16 @@ const chainLinks = [
         text: 'β-клетки',
         index: 1,
         modificators: 'symbolβ small',
-        symbol: 'β'
+        symbol: 'β',
+        arrows: [mainArrows.down]
     },
     {
         layout: 'row',
         align: 'center',
         innerText: 'Дефект <br> α-клеток',
         modificators: 'small',
-        symbol: 3
+        symbol: 3,
+        arrows: [mainArrows.down]
     },
     {
         layout: 'row-reverse',
@@ -91,7 +59,8 @@ const chainLinks = [
         contentAlign: 'end',
         text: 'Почки',
         modificators: 'kidneys small',
-        index: 8
+        index: 8,
+        arrows: [mainArrows.right]
     },
     {
         layout: 'row',
@@ -100,7 +69,8 @@ const chainLinks = [
         contentAlign: 'start',
         innerText: 'Жировые <br> клетки',
         modificators: 'lipid small',
-        index: 4
+        index: 4,
+        arrows: [mainArrows.left]
     },
     {
         layout: 'column',
@@ -109,7 +79,8 @@ const chainLinks = [
         contentAlign: 'center',
         innerText: 'Головной <br> мозг',
         modificators: 'brain small',
-        index: 7
+        index: 7,
+        arrows: [mainArrows.up]
     },
     {
         layout: 'column',
@@ -118,7 +89,8 @@ const chainLinks = [
         contentAlign: 'center',
         innerText: 'Печень',
         modificators: 'liver small',
-        index: 6
+        index: 6,
+        arrows: [mainArrows.up]
     },
     {
         layout: 'column',
@@ -127,14 +99,10 @@ const chainLinks = [
         contentAlign: 'center',
         innerText: 'Мышцы',
         modificators: 'musle small',
-        index: 5
+        index: 5,
+        arrows: [mainArrows.up]
     }
 ];
-
-chainLinks.forEach((options, i) => {
-    options.arrows = arrows[i];
-    options.parentClass = 'hyperglycemia';
-});
 
 class Pathogenesis2009 extends Component {
     constructor(props) {
