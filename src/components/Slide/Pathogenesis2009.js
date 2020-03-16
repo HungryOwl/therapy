@@ -13,29 +13,16 @@ const arrows = [
     ],
     [
         {
-            length: 190,
-            deg: 40,
-            shiftX: 50,
-            shiftY: -14
-        },
-        {
-            length: 190,
-            deg: 140,
-            shiftX: 50,
-            shiftY: 14
-        },
-        {
-            length: 58,
+            length: 33,
             deg: 90,
-            shiftX: 50,
+            shiftX: 30
         }
     ],
     [
         {
-            length: 60,
-            deg: -180,
-            shiftX: 50,
-            shiftY: -7
+            length: 33,
+            deg: 90,
+            shiftX: 30
         }
     ]
 ];
@@ -46,7 +33,7 @@ const chainLinks = [
         align: 'center',
         innerText: 'Инкретиновый <br> эффект',
         modificators: 'small',
-        symbol: '2'
+        symbol: 2
     },
     {
         layout: 'column-reverse',
@@ -55,17 +42,15 @@ const chainLinks = [
         contentAlign: 'center',
         text: 'β-клетки',
         index: 1,
-        modificators: 'symbol',
+        modificators: 'symbol small',
         symbol: 'β'
     },
     {
-        layout: 'column-reverse',
-        align: 'start',
-        contentLayout: 'column',
-        contentAlign: 'center',
-        text: 'Печень',
-        index: 3,
-        modificators: 'liver'
+        layout: 'row',
+        align: 'center',
+        innerText: 'Дефект <br> α-клеток',
+        modificators: 'small',
+        symbol: 3
     }
 ];
 
@@ -86,8 +71,10 @@ class Pathogenesis2009 extends Component {
         return [
             <h3 className='slide__title'>Смертельный октет</h3>,
             <article className={hyperglycemiaClass}>
-                <div className='hyperglycemiaTernary__row'>
+                <div className='hyperglycemiaTernary__row flex-align-end'>
                     <ChainLink {...chainLinks[0]}/>
+                    <ChainLink {...chainLinks[1]}/>
+                    <ChainLink {...chainLinks[2]}/>
                 </div>
 
                 <div className='hyperglycemiaTernary__row flex-jalign-between flex-align-end'>
