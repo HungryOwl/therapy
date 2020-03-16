@@ -6,6 +6,7 @@ import Pathogenesis1998 from '../Slide/Pathogenesis1998';
 import Pathogenesis2009 from '../Slide/Pathogenesis2009';
 import Animation from '../Animation/animation'
 import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
+import Pathogenesis2016 from "../Slide/Pathogenesis2016";
 
 class BarSlider extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class BarSlider extends Component {
         this.sliderContent = {
             0: <Pathogenesis1998/>,
             1: <Pathogenesis2009/>,
-            2: 'третий горизонтальный слайд'
+            2: <Pathogenesis2016/>
         };
 
         this.options = {

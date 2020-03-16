@@ -13,6 +13,12 @@
     margin-top: 4px;
     margin-left: 160px;
 
+  &--sd2
+    display: flex;
+    width 900px;
+    margin-left: auto;
+    margin-right: auto;
+
   &__row
     display: flex;
 
@@ -40,17 +46,26 @@
     padding-left: 163px;
     padding-right: 200px;
 
+  &__column
+    display: flex;
+    flex-direction: column;
+
   &__text
+    position: relative;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+
+  &__panel
     font-family: "Lato", sans-serif;
     font-weight: 500;
     border: textBorderSize solid white;
 
-  &--ternary &__text
+  &--ternary &__panel
     padding: 34px 56px;
     font-size: 19px;
     line-height: @font-size;
 
-  &--octet &__text
+  &--octet &__panel
     padding-left: 105px;
     padding-right: 105px
     font-size: 25px;

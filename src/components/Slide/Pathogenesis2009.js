@@ -127,7 +127,7 @@ class Pathogenesis2009 extends Component {
 
                 <div className='hyperglycemia__row flex-jalign-between flex-align-start'>
                     <ChainLink {...chainLinks[3]}/>
-                    <div className='hyperglycemia__text'>Гипергликемия</div>
+                    <div className='hyperglycemia__panel'>Гипергликемия</div>
                     <ChainLink {...chainLinks[4]}/>
                 </div>
                 <div className='hyperglycemia__row flex-jalign-between flex-align-start'>
