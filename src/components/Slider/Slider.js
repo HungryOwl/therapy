@@ -22,14 +22,6 @@ class Slider extends Swipable {
         };
     }
 
-    swipeUp() {
-        this.currentPage = this.pageRange.limit(this.currentPage + 1);
-    }
-
-    swipeDown() {
-        this.currentPage = this.pageRange.limit(this.currentPage - 1);
-    }
-
     get currentPage() {
         let { currentPage } = this.state;
         return currentPage;
@@ -37,6 +29,14 @@ class Slider extends Swipable {
 
     set currentPage(value) {
         this.setState({ currentPage: value });
+    }
+
+    swipeUp() {
+        this.currentPage = this.pageRange.limit(this.currentPage + 1);
+    }
+
+    swipeDown() {
+        this.currentPage = this.pageRange.limit(this.currentPage - 1);
     }
 
     renderSlides(slideArr, slideContent) {
