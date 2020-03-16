@@ -119,7 +119,7 @@ class BarSlider extends Component {
 
         return (
             <div className='slider'>
-                <div className='slider__content slider__content--horizontal'  style={sliderStyle}>
+                <div className='slider__content slider__content--horizontal' style={sliderStyle}>
                     {this.renderSlides(this.sliderClasses, this.sliderContent)}
                 </div>
                 <DragBar
