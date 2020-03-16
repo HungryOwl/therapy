@@ -133,6 +133,9 @@
     line-height: @font-size;
     font-weight: 600;
 
+  &__content.flex-row &__index
+    padding-right: 10px;
+
   &__text
     font-weight: 500;
     font-size: 22px;
@@ -144,10 +147,15 @@
   &__box.flex-row-reverse &__text
     text-align: right;
 
-  &__box.flex-column &__text,
-  &__box.flex-column-reverse &__text
-    text-align: center;
+  &__content.flex-column.flex-align-start &__text
+    text-align: left;
 
+  &__content.flex-column.flex-align-end &__text
+    text-align: right;
+
+  &__content.flex-column.flex-align-center &__text
+    text-align: center;
+    
   &__symbol
     display: block;
     position: relative;

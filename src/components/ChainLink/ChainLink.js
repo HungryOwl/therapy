@@ -50,7 +50,7 @@ class ChainLink extends Component {
                 <div className={boxClasses}>
                     {(this.props.img || this.props.symbol) && <div className='chainLink__image'>
                         {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
-                        {this.props.arrows && this.renderArrows(this.props.arrows)}
+                        {this.props.arrows.length > 0 && this.renderArrows(this.props.arrows)}
                     </div>}
 
                     <div className={contentClasses}>

@@ -34,7 +34,7 @@ const chainLinks = [
         img: 'intestines',
         modificators: 'small',
         index: 8,
-        arrows: [{}]
+        arrows: []
     },
     {
         layout: 'row-reverse',
@@ -45,7 +45,7 @@ const chainLinks = [
         index: 9,
         img: 'infection',
         modificators: 'small',
-        arrows: [{}]
+        arrows: []
     },
     {
         layout: 'row-reverse',
@@ -56,30 +56,29 @@ const chainLinks = [
         modificators: 'small',
         img: 'stomach',
         index: 10,
-        arrows: [{}]
+        arrows: []
     },
     {
         layout: 'column-reverse',
         align: 'center',
-        contentLayout: 'column',
+        contentLayout: 'row',
         contentAlign: 'center',
         text: 'β-клетки',
         index: 1,
         img: 'symbolβ',
         modificators: 'small',
         symbol: 'β',
-        arrows: [{}]
+        arrows: []
     },
     {
         layout: 'column-reverse',
-        align: 'start',
+        align: '',
         contentLayout: 'column',
-        contentAlign: 'start',
-        innerText: 'Жировые <br> клетки',
-        img: 'lipid',
+        contentAlign: 'end',
+        innerText: 'Инкретинового <br> эффекта',
         modificators: 'small',
-        index: 4,
-        arrows: [mainArrows.left]
+        index: 2,
+        arrows: []
     },
     {
         layout: 'column',
@@ -130,13 +129,14 @@ class Pathogenesis2016 extends Component {
                     <ChainLink {...chainLinks[1]}/>
                     <div className='hyperglycemia__text hyperglycemia__text--amylin'>
                         <span>↓ амилин</span>
-                        <Arrow length={12} deg={90} shiftX={20}/>
+                        <Arrow length={12} deg={90} shiftX={20} />
                     </div>
-
+                    <ChainLink {...chainLinks[2]}/>
                 </div>
 
                 <div className='hyperglycemia__column'>
-                    <ChainLink {...chainLinks[2]}/>
+                    <ChainLink {...chainLinks[3]}/>
+                    <ChainLink {...chainLinks[4]}/>
                 </div>
 
                 <div className='hyperglycemia__column'>
