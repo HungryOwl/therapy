@@ -6,7 +6,8 @@ export class ValueRange {
     }
 
     limit(value) {
-        return (value < this.min) ? this.min : (value > this.max) ? this.max : value;
+        return (value < this.min) ? this.min :
+               (value > this.max) ? this.max : value;
     }
 }
 
