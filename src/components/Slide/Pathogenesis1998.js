@@ -7,7 +7,6 @@ const arrows = [
     [
         {
             length: 60,
-            deg: 0,
             shiftX: 50,
             shiftY: 10
         }

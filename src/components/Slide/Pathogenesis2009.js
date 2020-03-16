@@ -6,10 +6,9 @@ const hyperglycemiaClass = 'hyperglycemiaTernary';
 const arrows = [
     [
         {
-            length: 60,
-            deg: 0,
-            shiftX: 50,
-            shiftY: 10
+            length: 33,
+            deg: 90,
+            shiftX: 30
         }
     ],
     [
@@ -29,7 +28,6 @@ const arrows = [
             length: 58,
             deg: 90,
             shiftX: 50,
-            shiftY: 0
         }
     ],
     [
@@ -82,6 +80,9 @@ class Pathogenesis2009 extends Component {
     }
 
     render() {
+
+        console.log(chainLinks[0]);
+
         return [
             <h3 className='slide__title'>Смертельный октет</h3>,
             <article className={hyperglycemiaClass}>
