@@ -35,6 +35,27 @@ const arrows = [
             deg: 180,
             shiftX: 30
         }
+    ],
+    [
+        {
+            length: 24,
+            deg: 270,
+            shiftX: 30
+        }
+    ],
+    [
+        {
+            length: 24,
+            deg: 270,
+            shiftX: 30
+        }
+    ],
+    [
+        {
+            length: 24,
+            deg: 270,
+            shiftX: 30
+        }
     ]
 ];
 
@@ -79,7 +100,34 @@ const chainLinks = [
         contentAlign: 'start',
         innerText: 'Жировые <br> клетки',
         modificators: 'lipid small',
-        index: 3
+        index: 4
+    },
+    {
+        layout: 'column',
+        align: 'center',
+        contentLayout: 'column',
+        contentAlign: 'center',
+        innerText: 'Головной <br> мозг',
+        modificators: 'brain small',
+        index: 7
+    },
+    {
+        layout: 'column',
+        align: 'center',
+        contentLayout: 'column',
+        contentAlign: 'center',
+        innerText: 'Печень',
+        modificators: 'liver small',
+        index: 6
+    },
+    {
+        layout: 'column',
+        align: 'center',
+        contentLayout: 'column',
+        contentAlign: 'center',
+        innerText: 'Мышцы',
+        modificators: 'musle small',
+        index: 5
     }
 ];
 
@@ -108,8 +156,10 @@ class Pathogenesis2009 extends Component {
                     <div className='hyperglycemia__text'>Гипергликемия</div>
                     <ChainLink {...chainLinks[4]}/>
                 </div>
-                <div className='hyperglycemia__row flex-jalign-between flex-align-end'>
-
+                <div className='hyperglycemia__row flex-jalign-between flex-align-start'>
+                    <ChainLink {...chainLinks[5]}/>
+                    <ChainLink {...chainLinks[6]}/>
+                    <ChainLink {...chainLinks[7]}/>
                 </div>
             </article>
         ];

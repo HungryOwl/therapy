@@ -10,6 +10,7 @@
 
   &--octet
     width: 750px;
+    margin-top: 4px;
     margin-left: 160px;
 
   &__row
@@ -28,8 +29,16 @@
   &--ternary &__row + &__row .chainLink
     padding-bottom: 10px;
 
-  &--octet &__row.flex-align-start .chainLink
+  &--octet &__row:nth-child(2)
+    height: 143px;
+    overflow: visible;
+
+  &--octet &__row:nth-child(2) .chainLink
     margin-top: smallChainLinkOffsetY
+
+  &--octet &__row:last-child
+    padding-left: 163px;
+    padding-right: 200px;
 
   &__text
     font-family: "Lato", sans-serif;

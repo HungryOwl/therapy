@@ -43,6 +43,10 @@
     height: 100%;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 60px auto;
+
+  &--brain &__image::after
+    background-image: url("../../../assets/images/brain.png");
 
   &--musle &__image::after
     background-image: url("../../../assets/images/musle.png");
@@ -51,11 +55,12 @@
 
   &--liver &__image::after
     background-image: url("../../../assets/images/liver.png");
-    background-size: 60px auto;
+
+  &--lipid &__image::after
+    background-image: url("../../../assets/images/lipid.png");
 
   &--kidneys &__image::after
     background-image: url("../../../assets/images/kidneys.png");
-    background-size: 60px auto;
 
   &--small&--musle &__image::after
     background-image: url("../../../assets/images/musle.png");
@@ -63,16 +68,16 @@
     transform: rotate(-30deg);
 
   &--small&--liver &__image::after
-    background-image: url("../../../assets/images/liver.png");
     background-size: 44px auto;
 
   &--small&--kidneys &__image::after
-    background-image: url("../../../assets/images/kidneys.png");
     background-size: 40px auto;
 
   &--small&--lipid &__image::after
-    background-image: url("../../../assets/images/lipid.png");
-    background-size: 40px auto;
+    background-size: 46px auto;
+
+  &--small&--brain &__image::after
+    background-size: 46px auto;
 
   &__content
     display: flex;
@@ -83,6 +88,12 @@
 
   &__box.flex-column-reverse &__content.flex-column
     padding-bottom: 20px;
+
+  &--small &__box.flex-column &__content.flex-column
+    padding-top: 4px;
+
+  &--small &__box.flex-column-reverse &__content.flex-column
+    padding-bottom: 10px;
 
   &__content.flex-column-reverse
     padding-top: 15px;
@@ -114,6 +125,10 @@
 
   &__box.flex-row-reverse &__text
     text-align: right;
+
+  &__box.flex-column &__text,
+  &__box.flex-column-reverse &__text
+    text-align: center;
 
   &__symbol
     display: block;
