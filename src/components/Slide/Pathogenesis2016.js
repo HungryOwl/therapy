@@ -173,7 +173,7 @@ const chainLinks = [
         text: 'Дефект α-клеток',
         modificators: 'small cellDefect',
         index: 3,
-        arrows: [{
+        tArrows: [{
             length: 10,
             deg: 90,
             shiftX: 30,
@@ -291,7 +291,7 @@ class Pathogenesis2016 extends Component {
                 <div className='hyperglycemia__column flex-align-start'>
                     <ChainLink {...chainLinks[7]}/>
 
-                    <section className='hyperglycemia__column hyperglycemia__column--group'>
+                    <section className='hyperglycemia__column hyperglycemia__column--resistgroup'>
                         <div className='hyperglycemia__text hyperglycemia__text--small'>Инсулинорезистентность</div>
                         <ChainLink {...chainLinks[8]}/>
                         <ChainLink {...chainLinks[9]}/>

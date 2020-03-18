@@ -16,8 +16,7 @@
   &--sd2
     display: flex;
     width 1024px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 45px;
     padding-top: 2px;
 
   &__row
@@ -81,7 +80,7 @@
     transform: translateX(-25%);
 
   &--sd2 &__column .chainLink--brain
-    margin-bottom: 60px;
+    margin-bottom: 35px;
 
   &--sd2 &__column .chainLink--intestines,
   &--sd2 &__column .chainLink--infection
@@ -89,6 +88,20 @@
 
   &--sd2 &__column .chainLink--stomach .chainLink__content
     padding-bottom: 20px;
+
+  &--sd2 &__column--resistgroup
+    box-sizing: border-box;
+    width: 258px;
+    margin-left: -16px;
+    padding-top: 24px;
+    padding-left: 16px;
+    text-align: center;
+    border-radius: 50px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), transparent);
+
+  &--sd2 &__column--resistgroup .chainLink
+    margin-top: 22px;
+
 
   &__text
     position: relative;
