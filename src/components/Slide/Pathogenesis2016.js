@@ -53,6 +53,45 @@ const symbolArrows = [
         length: 207,
         deg: 90,
         shiftX: 50
+    },
+    {
+        length: 140,
+        deg: 150,
+        shiftX: 60,
+        shiftY: -5
+    },
+    {
+        length: 210,
+        deg: 142,
+        shiftX: 60,
+        shiftY: -12
+    },
+    {
+        length: 140,
+        deg: 30,
+        shiftX: 60,
+        shiftY: 7
+    }
+];
+const brainArrows = [{
+        length: 105,
+        deg: 188,
+        shiftX: 46,
+        shiftY: 3
+    }
+];
+
+const brainTArrows = [{
+        length: 15,
+        deg: 90,
+        shiftX: 34,
+        shiftY: 44
+    },
+    {
+        length: 15,
+        deg: -90,
+        shiftX: -58,
+        shiftY: -54
     }
 ];
 
@@ -66,7 +105,12 @@ const chainLinks = [
         img: 'intestines',
         modificators: 'small',
         index: 8,
-        arrows: []
+        arrows: [{
+            length: 105,
+            deg: -8,
+            shiftX: 50,
+            shiftY: -5
+        }]
     },
     {
         layout: 'row-reverse',
@@ -88,7 +132,13 @@ const chainLinks = [
         modificators: 'small',
         img: 'stomach',
         index: 10,
-        arrows: []
+        arrows: [
+            {
+                length: 65,
+                shiftX: 45,
+                shiftY: 5
+            }
+        ]
     },
     {
         layout: 'column-reverse',
@@ -108,7 +158,8 @@ const chainLinks = [
         innerText: '↓&nbsp;инкретинового <br> эффекта',
         modificators: 'small incretin',
         index: 2,
-        arrows: [{
+        arrows: [],
+        tArrows: [{
             length: 40,
             deg: 90,
             shiftX: 50,
@@ -133,7 +184,7 @@ const chainLinks = [
         layout: 'row-reverse',
         align: 'center',
         contentLayout: 'column',
-        contentAlign: 'center',
+        contentAlign: 'end',
         innerText: 'Почки',
         img: 'kidneys',
         modificators: 'small',
@@ -154,7 +205,8 @@ const chainLinks = [
         img: 'brain',
         modificators: 'small',
         index: 7,
-        arrows: []
+        arrows: brainArrows,
+        tArrows: brainTArrows
     },
     {
         layout: 'row',
@@ -205,7 +257,8 @@ class Pathogenesis2016 extends Component {
                     <ChainLink {...chainLinks[1]}/>
                     <div className='hyperglycemia__text hyperglycemia__text--amylin'>
                         <span>↓ амилин</span>
-                        <Arrow length={12} deg={90} shiftX={20} />
+                        <Arrow length={12} deg={90} shiftX={20}/>
+                        <Arrow length={90} deg={25} shiftX={40} shiftY={14}/>
                     </div>
                     <ChainLink {...chainLinks[2]}/>
                 </div>

@@ -51,9 +51,11 @@
     display: flex;
     flex-direction: column;
 
-  &--sd2 > &__column:nth-child(1),
+  &--sd2 > &__column:nth-child(1)
+    padding-top: 77px
+
   &--sd2 > &__column:nth-child(3)
-    padding-top: 77px;
+    padding-top: 89px
 
   &--sd2 > &__column:nth-child(2)
     padding-left: 26px;
@@ -77,6 +79,9 @@
   &--sd2 &__column .chainLink--kidneys
     margin-top: 40px;
     transform: translateX(-25%);
+
+  &--sd2 &__column .chainLink--brain
+    margin-bottom: 60px;
 
   &--sd2 &__column .chainLink--intestines,
   &--sd2 &__column .chainLink--infection
