@@ -142,7 +142,7 @@ const chainLinks = [
             length: 12,
             deg: 270,
             shiftX: 40,
-            shiftY: -50
+            shiftY: -14
         }]
     },
     {
