@@ -9,18 +9,13 @@ class ChainLink extends Component {
 
     renderArrows(optionsArr) {
         return (
-            optionsArr.map((options, i) => {
-                return <Arrow {...options} key={i}/>
-            })
+            optionsArr.map((options, i) => <Arrow {...options} key={i}/>)
         )
     }
 
     getModificators(modString, obj) {
         let modArr = modString.split(' ');
-
-        modArr.forEach((mod) => (
-            obj[`chainLink--${mod}`] = true
-        ));
+        modArr.forEach((mod) => obj[`chainLink--${mod}`] = true);
 
         return obj;
     }
@@ -28,6 +23,7 @@ class ChainLink extends Component {
     render() {
         let chainLinkClasses = {
             'chainLink': true,
+            [`${this.props.parentClass}__chainLink`]: this.props.parentClass,
             [`chainLink--${this.props.img}`]: this.props.img
         };
 
@@ -57,6 +53,7 @@ class ChainLink extends Component {
                         {this.props.index && <div className='chainLink__index'>{this.props.index}</div>}
                         {this.props.text && <div className='chainLink__text'>{this.props.text}</div>}
                         {this.props.innerText && <div dangerouslySetInnerHTML={{__html: this.props.innerText}} className='chainLink__text'/>}
+                        {!(this.props.img || this.props.symbol) && this.props.arrows.length > 0 && this.renderArrows(this.props.arrows)}
                     </div>
                 </div>
             </article>
