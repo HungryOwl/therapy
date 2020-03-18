@@ -2,28 +2,6 @@ import React, { Component } from 'react';
 import ChainLink from '../ChainLink/ChainLink';
 import Arrow from '../Arrow/Arrow';
 
-const mainArrows = {
-    up:  {
-        length: 24,
-        deg: 270,
-        shiftX: 30
-    },
-    down: {
-        length: 24,
-        deg: 90,
-        shiftX: 30
-    },
-    left: {
-        length: 24,
-        deg: 180,
-        shiftX: 30
-    },
-    right: {
-        length: 24,
-        shiftX: 30
-    },
-};
-
 const symbolArrows = [
     {
         length: 105,
@@ -73,15 +51,16 @@ const symbolArrows = [
         shiftY: 7
     }
 ];
-const brainArrows = [{
+const brainArrows = [
+    {
         length: 105,
         deg: 188,
         shiftX: 46,
         shiftY: 3
     }
 ];
-
-const brainTArrows = [{
+const brainTArrows = [
+    {
         length: 15,
         deg: 90,
         shiftX: 34,
@@ -121,7 +100,12 @@ const chainLinks = [
         index: 9,
         img: 'infection',
         modificators: 'small',
-        arrows: []
+        arrows: [{
+            length: 140,
+            deg: -30,
+            shiftX: 50,
+            shiftY: 8
+        }]
     },
     {
         layout: 'row-reverse',
@@ -292,6 +276,7 @@ class Pathogenesis2016 extends Component {
                     <ChainLink {...chainLinks[7]}/>
 
                     <section className='hyperglycemia__column hyperglycemia__column--resistgroup'>
+                        <Arrow length={140} deg={210} shiftX={180} shiftY={48}/>
                         <div className='hyperglycemia__text hyperglycemia__text--small'>Инсулинорезистентность</div>
                         <ChainLink {...chainLinks[8]}/>
                         <ChainLink {...chainLinks[9]}/>
