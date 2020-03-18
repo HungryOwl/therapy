@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
-import Arrow from "../Arrow/Arrow";
+import Arrow from '../Arrow/Arrow';
 
 class ChainLink extends Component {
     constructor(props) {
