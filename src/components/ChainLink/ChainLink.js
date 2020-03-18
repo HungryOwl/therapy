@@ -8,9 +8,7 @@ class ChainLink extends Component {
     }
 
     renderArrows(optionsArr) {
-        return (
-            optionsArr.map((options, i) => <Arrow {...options} key={i}/>)
-        )
+        return optionsArr.map((options, i) => <Arrow {...options} key={i}/>)
     }
 
     getModificators(modString, obj) {
@@ -21,6 +19,10 @@ class ChainLink extends Component {
     }
 
     render() {
+        const isImage = this.props.img || this.props.symbol;
+        const isArrowedText = !isImage;
+        const isArrows = this.props.arrows.length > 0;
+
         let chainLinkClasses = {
             'chainLink': true,
             [`${this.props.parentClass}__chainLink`]: this.props.parentClass,
@@ -44,7 +46,7 @@ class ChainLink extends Component {
         return (
             <article className={chainLinkClasses}>
                 <div className={boxClasses}>
-                    {(this.props.img || this.props.symbol) && <div className='chainLink__image'>
+                    {isImage && <div className='chainLink__image'>
                         {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
                         {this.props.arrows.length > 0 && this.renderArrows(this.props.arrows)}
                     </div>}
@@ -53,7 +55,7 @@ class ChainLink extends Component {
                         {this.props.index && <div className='chainLink__index'>{this.props.index}</div>}
                         {this.props.text && <div className='chainLink__text'>{this.props.text}</div>}
                         {this.props.innerText && <div dangerouslySetInnerHTML={{__html: this.props.innerText}} className='chainLink__text'/>}
-                        {!(this.props.img || this.props.symbol) && this.props.arrows.length > 0 && this.renderArrows(this.props.arrows)}
+                        {isArrowedText && isArrows && this.renderArrows(this.props.arrows)}
                     </div>
                 </div>
             </article>
