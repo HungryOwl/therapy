@@ -1,12 +1,13 @@
 import React from 'react';
+import { ValueRange } from '../utils'
 import Slide from '../Slide/Slide'
 import Goals from '../Slide/Goals'
 import Therapy from '../Slide/Therapy'
 import Pagination from '../Pagination'
 import BarSlider from '../BarSlider/BarSlider'
-import { ValueRange } from '../utils'
 import Swipable from '../Swipable/Swipable';
 import Swipedown from '../Slide/SwipeDown';
+import Modal from '../Modal/Modal'
 
 class Slider extends Swipable {
     constructor(props) {
@@ -73,6 +74,7 @@ class Slider extends Swipable {
                 </div>
                 {this.renderSwipedown()}
                 <Pagination amount={this.pageRange.max + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
+                <Modal/>
             </div>
         );
     }
