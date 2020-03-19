@@ -20,9 +20,7 @@ export default class Timer extends Component {
     tick() {
         let currentDate = this.state.date;
         currentDate.setSeconds(currentDate.getSeconds() - 1);
-
         this.setState({ date: currentDate });
-
         if (currentDate.getSeconds() === 0 && currentDate.getMinutes() === 0) clearInterval(this.timerID);
     }
 

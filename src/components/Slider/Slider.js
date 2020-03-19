@@ -75,7 +75,7 @@ class Slider extends Swipable {
                 {this.renderSwipedown()}
                 <Pagination amount={this.pageRange.max + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
                 <Modal/>
-                <Timer minutes={1}/>
+                <Timer minutes={10}/>
             </div>
         );
     }
