@@ -73,7 +73,6 @@ const brainTArrows = [
         shiftY: -54
     }
 ];
-
 const chainLinks = [
     {
         layout: 'row-reverse',
