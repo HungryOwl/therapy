@@ -12,9 +12,10 @@ import Modal from '../Modal/Modal'
 class Slider extends Swipable {
     constructor(props) {
         super(props);
-        this.state = { currentPage: 2 };
+        this.state = { currentPage: 0 };
         this.sliderClasses = props.sliderClasses;
         this.pageRange = new ValueRange(0, this.sliderClasses.length - 1);
+        this.maxPage = this.pageRange.max;
 
         this.sliderContent = {
             0: <Goals/>,
