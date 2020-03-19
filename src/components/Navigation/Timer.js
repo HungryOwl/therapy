@@ -18,13 +18,25 @@ export default class Timer extends Component {
     }
 
     get isTimeOver() {
-        return this.state.date.getSeconds() === 0 && this.state.date.getMinutes() === 0
+        return this.seconds === 0 && this.minutes === 0;
+    }
+
+    get minutes() {
+        return this.state.date.getMinutes();
+    }
+
+    get seconds() {
+        return this.state.date.getSeconds();
+    }
+
+    set seconds(value) {
+        let currentDate = this.state.date;
+        currentDate.setSeconds(value);
+        this.setState({ date: currentDate });
     }
 
     tick() {
-        let currentDate = this.state.date;
-        currentDate.setSeconds(currentDate.getSeconds() - 1);
-        this.setState({ date: currentDate });
+        this.seconds--;
         if (this.isTimeOver) clearInterval(this.timerID);
     }
 
@@ -34,10 +46,10 @@ export default class Timer extends Component {
     }
 
     render() {
-        const minutes = this.state.date.getMinutes(),
-              seconds = this.state.date.getSeconds(),
-              currentTime = minutes + ':' + this.pad(seconds);
+        const currentTime = this.minutes + ':' + this.pad(this.seconds);
 
-        return <span className='timer'>{currentTime}</span>;
+        return [
+            <span className='timer'>{currentTime}</span>
+        ];
     }
 }
