@@ -39,7 +39,7 @@ class Navigation extends Countdown {
 
         return [
             <Modal isActive={this.isTimeOver}/>,
-            
+
             <section className='navigation'>
                 <div className='navigation__column w-half flex-align-center'>
                     {this.renderNavBtn(btnTypes)}
