@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cn from "classnames";
 
 class Slider extends Component {
     constructor(props) {
@@ -6,11 +7,16 @@ class Slider extends Component {
     }
 
     render() {
-        const { children } = this.props;
+        const { children, slideType, isActive } = this.props;
+        const slideClasses = cn({
+            'slide': true,
+            'slide--active': isActive,
+            [`slide--${slideType}`]: true
+        });
 
         return (
-            <section className={`slide slide--${this.props.slideType}`}>
-                {children}
+            <section className={slideClasses}>
+                { children }
             </section>
         );
     }

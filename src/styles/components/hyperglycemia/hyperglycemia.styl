@@ -1,0 +1,139 @@
+@import './hyperglycemia__globals.styl'
+@import '../chainLink/__.styl'
+
+.hyperglycemia
+  &--ternary
+    width: 580px;
+    margin-left: 243px;
+    margin-top: 50px;
+    height: 350px;
+
+  &--octet
+    width: 750px;
+    margin-top: 4px;
+    margin-left: 160px;
+
+  &--sd2
+    display: flex;
+    width 1024px;
+    margin-left: 45px;
+    padding-top: 2px;
+
+  &__row
+    display: flex;
+
+  &--ternary &__row
+    padding-bottom: 4px;
+
+  &--octet &__row
+    padding-bottom: 34px;
+
+  &--octet &__row:first-child
+    padding-left: 30px;
+    padding-right: 110px;
+
+  &--ternary &__row + &__row .chainLink
+    padding-bottom: 10px;
+
+  &--octet &__row:nth-child(2)
+    height: 143px;
+    overflow: visible;
+
+  &--octet &__row:nth-child(2) .chainLink
+    margin-top: smallChainLinkOffsetY
+
+  &--octet &__row:last-child
+    padding-left: 163px;
+    padding-right: 200px;
+
+  &__column
+    display: flex;
+    flex-direction: column;
+
+  &--sd2 > &__column:nth-child(1)
+    padding-top: 77px
+
+  &--sd2 > &__column:nth-child(3)
+    padding-top: 89px
+
+  &--sd2 > &__column:nth-child(2)
+    padding-left: 26px;
+    padding-right: 26px;
+
+  &--sd2 &__column.w-half:nth-child(2n)
+    padding-left: 16px;
+
+  &--sd2 &__column.w-half:nth-child(2n-1)
+    padding-right: 16px;
+
+  &--sd2 &__column .chainLink--symbolβ
+    padding-bottom: 78px;
+
+  &--sd2 &__column .chainLink--symbolβ .chainLink__content
+    margin-left: -32px;
+
+  &--sd2 &__column .chainLink--symbolβ .chainLink__text
+    font-size: 25px;
+
+  &--sd2 &__column .chainLink--kidneys
+    margin-top: 40px;
+    transform: translateX(-25%);
+
+  &--sd2 &__column .chainLink--brain
+    margin-bottom: 35px;
+
+  &--sd2 &__column .chainLink--intestines,
+  &--sd2 &__column .chainLink--infection
+    margin-bottom: 10px;
+
+  &--sd2 &__column .chainLink--stomach .chainLink__content
+    padding-bottom: 20px;
+
+  &--sd2 &__column--resistgroup
+    box-sizing: border-box;
+    position: relative;
+    width: 258px;
+    margin-left: -16px;
+    padding-top: 24px;
+    padding-left: 16px;
+    text-align: center;
+    border-radius: 50px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), transparent);
+
+  &--sd2 &__column--resistgroup .chainLink
+    margin-top: 22px;
+
+
+  &__text
+    position: relative;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+
+  &__text--amylin
+    margin-bottom: 35px;
+
+  &--sd2 &__text
+    font-size: 15px;
+
+  &--sd2 &__text--huge
+    font-size: 25px;
+
+  &--sd2 &__text--glucagon
+    margin-top: 20px;
+    margin-bottom: 44px;
+
+  &__panel
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    border: textBorderSize solid white;
+
+  &--ternary &__panel
+    padding: 34px 56px;
+    font-size: 19px;
+    line-height: @font-size;
+
+  &--octet &__panel
+    padding-left: 105px;
+    padding-right: 105px
+    font-size: 25px;
+    line-height: octetTextLineHeight;

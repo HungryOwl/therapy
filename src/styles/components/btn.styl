@@ -1,0 +1,38 @@
+.btn
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 40px;
+  height: @width;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  color: black;
+  background-repeat: no-repeat;
+  background-position: 50%;
+
+  &--play
+    background-image: url("../../assets/images/play.svg");
+    background-size: 25px;
+    background-position: 60% 50%;
+
+  &--pause
+    background-image: url("../../assets/images/pause.svg");
+    background-size: 18px;
+
+  &--accept
+    background-image: url("../../assets/images/tick.svg");
+    background-size: 20px;
+
+  &--close
+    background-image: url("../../assets/images/cross.svg");
+    background-size: 20px;
+
+  &--video
+    background-image: url("../../assets/images/no-video.svg");
+    background-size: 20px;
+
+  &--ellipsis
+    width: 28px;
+    height: @width;
