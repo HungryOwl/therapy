@@ -13,7 +13,7 @@ import Navigation from '../Navigation/index'
 class Slider extends Swipable {
     constructor(props) {
         super(props);
-        this.state = { currentPage: 0 };
+        this.state = { currentPage: 2 };
         this.sliderClasses = props.sliderClasses;
         this.pageRange = new ValueRange(0, this.sliderClasses.length - 1);
         this.maxPage = this.pageRange.max;
@@ -43,9 +43,7 @@ class Slider extends Swipable {
     }
 
     renderSlides(slideArr, slideContent) {
-        return (
-            slideArr.map((slideType, i) => <Slide key={i} slideType={slideType} isActive={this.state.currentPage === i}>{slideContent[i]}</Slide>)
-        );
+        return slideArr.map((slideType, i) => <Slide key={i} slideType={slideType} isActive={this.state.currentPage === i}>{slideContent[i]}</Slide>);
     }
 
     renderSwipedown() {
@@ -72,7 +70,7 @@ class Slider extends Swipable {
                 </div>
                 {this.renderSwipedown()}
                 <Pagination amount={this.pageRange.max + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
-                <Navigation minutes={1}/>
+                <Navigation minutes={59}/>
             </div>
         );
     }
