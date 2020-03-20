@@ -7,8 +7,8 @@ import Pagination from '../Pagination'
 import BarSlider from '../BarSlider/BarSlider'
 import Swipable from '../Swipable/Swipable';
 import Swipedown from '../Slide/SwipeDown';
-import Modal from '../Modal/Modal'
-import Timer from '../Navigation/Timer'
+
+import Navigation from '../Navigation/index'
 
 class Slider extends Swipable {
     constructor(props) {
@@ -44,9 +44,7 @@ class Slider extends Swipable {
 
     renderSlides(slideArr, slideContent) {
         return (
-            slideArr.map((slideType, i) => (
-                <Slide key={i} slideType={slideType} isActive={this.state.currentPage === i}>{slideContent[i]}</Slide>
-            ))
+            slideArr.map((slideType, i) => <Slide key={i} slideType={slideType} isActive={this.state.currentPage === i}>{slideContent[i]}</Slide>)
         );
     }
 
@@ -74,8 +72,7 @@ class Slider extends Swipable {
                 </div>
                 {this.renderSwipedown()}
                 <Pagination amount={this.pageRange.max + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
-                <Modal/>
-                <Timer minutes={10}/>
+                <Navigation minutes={1}/>
             </div>
         );
     }

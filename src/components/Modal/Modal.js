@@ -1,8 +1,14 @@
 import React from 'react';
+import cn from 'classnames';
 
-const Modal = () => {
+const Modal = (props) => {
+    const modalClasses = cn({
+        'modal': true,
+        'modal--active': props.isActive
+    });
+
     return (
-        <div className='modal'>
+        <div className={modalClasses}>
             <footer className='modal__footer'>
                 <p>
                     1. Defronzo RA. Diabetes. 2009 Apr;58(4):773-95<br/>

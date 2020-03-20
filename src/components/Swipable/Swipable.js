@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Axis } from '../utils';
 
-class Swipable extends Component {
+export default class Swipable extends Component {
     constructor() {
         super();
         this.x = new Axis(100);             // минимальное расстояние прохода пальца по оси Х для swipe
@@ -68,6 +68,4 @@ class Swipable extends Component {
             }
         }
     };
-}
-
-export default Swipable;
+};
