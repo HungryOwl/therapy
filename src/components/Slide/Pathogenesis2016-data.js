@@ -1,3 +1,5 @@
+import React from "react";
+
 const symbolArrows = [
     { length: 105, deg: 172, shiftX: 67, shiftY: 7 },
     { length: 105, deg: 8, shiftX: 67, shiftY: -5 },
@@ -160,4 +162,13 @@ export const chainLinks = {
         modificators: 'small',
         index: 4
     }
+};
+
+export const arrows = {
+    amylin: [
+        { length: 12, deg: 90, shiftX:20 },
+        { length:90, deg:25, shiftX:40, shiftY:14 }
+    ],
+    glukagon: [{ length:22, deg:90, shiftX:18, shiftY:64 }],
+    glycemia: [{ length: 12, deg: 90, shiftX: 20, shiftY: -10 }]
 };

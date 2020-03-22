@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ChainLink from '../ChainLink/ChainLink';
 import Arrow from '../Arrow/Arrow';
-import { chainLinks } from "./Pathogenesis2016-data";
-
+import ArrowedText from '../ArrowedText/ArrowedText';
+import { chainLinks, arrows } from "./Pathogenesis2016-data";
 
 class Pathogenesis2016 extends Component {
     constructor(props) {
@@ -16,11 +16,7 @@ class Pathogenesis2016 extends Component {
                 <div className='hyperglycemia__column flex-align-end'>
                     <ChainLink {...chainLinks.intestines}/>
                     <ChainLink {...chainLinks.infection}/>
-                    <div className='hyperglycemia__text hyperglycemia__text--amylin'>
-                        <span>↓ амилин</span>
-                        <Arrow length={12} deg={90} shiftX={20}/>
-                        <Arrow length={90} deg={25} shiftX={40} shiftY={14}/>
-                    </div>
+                    <ArrowedText text='↓&nbsp;амилин' classes='hyperglycemia__text hyperglycemia__text--amylin' arrows={arrows.amylin}/>
                     <ChainLink {...chainLinks.stomach}/>
                 </div>
 
@@ -34,18 +30,11 @@ class Pathogenesis2016 extends Component {
 
                         <section className='hyperglycemia__column w-half'>
                             <ChainLink {...chainLinks.cellDefect}/>
-                            <div className='hyperglycemia__text hyperglycemia__text--glucagon'>
-                                <span>↑&nbsp;глюкагон</span>
-                                <Arrow length={22} deg={90} shiftX={18} shiftY={64}/>
-                            </div>
+                            <ArrowedText text='↑&nbsp;глюкагон' classes='hyperglycemia__text hyperglycemia__text--glucagon' arrows={arrows.glukagon}/>
                         </section>
                     </div>
 
-                    <div className='hyperglycemia__text hyperglycemia__text--huge'>
-                        <span>Гипергликемия</span>
-                        <Arrow length={12} deg={90} shiftX={20} shiftY={-10}/>
-                    </div>
-
+                    <ArrowedText text='Гипергликемия' classes='hyperglycemia__text hyperglycemia__text--huge' arrows={arrows.glycemia}/>
                     <ChainLink {...chainLinks.kidneys}/>
                 </div>
 

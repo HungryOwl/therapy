@@ -7,8 +7,8 @@ class ChainLink extends Component {
         super(props);
     }
 
-    renderArrows(optionsArr) {
-        return optionsArr.map((options, i) => <Arrow {...options} key={i}/>)
+    renderArrows(arrowsArr) {
+        return arrowsArr.map((options, i) => <Arrow {...options} key={i}/>)
     }
 
     getModificators(modString, obj) {
