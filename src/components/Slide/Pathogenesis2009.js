@@ -22,6 +22,7 @@ class Pathogenesis2009 extends Component {
                     <div className='hyperglycemia__panel'>Гипергликемия</div>
                     <ChainLink {...chainLinks.lipid}/>
                 </div>
+
                 <div className='hyperglycemia__row flex-jalign-between flex-align-start'>
                     <ChainLink {...chainLinks.brain}/>
                     <ChainLink {...chainLinks.liver}/>

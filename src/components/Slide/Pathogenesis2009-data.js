@@ -9,7 +9,7 @@ export const chainLinks = {
     incretin: {
         layout: 'row-reverse',
         align: 'center',
-        innerText: 'Инкретиновый <br> эффект',
+        innerText: 'Инкретиновый <br/> эффект',
         modificators: 'small',
         symbol: 2,
         arrows: [mainArrows.down]
@@ -51,7 +51,7 @@ export const chainLinks = {
         align: 'start',
         contentLayout: 'column',
         contentAlign: 'start',
-        innerText: 'Жировые <br> клетки',
+        innerText: 'Жировые <br/> клетки',
         img: 'lipid',
         modificators: 'small',
         index: 4,
