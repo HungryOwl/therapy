@@ -54,6 +54,7 @@ class BarSlider extends Component {
         return this.pinCoordsRange.max / this.pageRange.max;
     }
 
+    // @TODO эти методы нужно отрефакторить и убрать ошибку, вызванную реализацией и this.pinNode = null;
     onBarTouchStart = (evt) => {
         let touchObj = evt.changedTouches[0];
         this.startX = touchObj.clientX;
