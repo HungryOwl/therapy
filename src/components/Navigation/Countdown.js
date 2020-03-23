@@ -54,12 +54,10 @@ export default class Countdown extends Component {
 
     onTick() {
         this.onStateChange();
-        console.log('Time: ' + this.timerValue);
     }
 
     onToggle() {
         this.onStateChange();
-        console.log('Ticking: ' + this.isTicking);
     }
 
     onStateChange() {

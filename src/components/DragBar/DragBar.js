@@ -6,11 +6,7 @@ class DragBar extends Component {
     }
 
     renderBarValues(valuesArr) {
-        return (
-            valuesArr.map((value, i) => (
-                <span className='dragBar__checkpoint' key={i}>{value}</span>
-            ))
-        );
+        return valuesArr.map((value, i) => <span className='dragBar__checkpoint' key={i}>{value}</span>);
     }
 
     render() {
@@ -22,14 +18,13 @@ class DragBar extends Component {
         let valueStyles = { width: position };
 
         return (
-            <div className='dragBar' style={barStyles}>
+            <div className='dragBar'
+                 style={barStyles}
+                 onTouchStart={onBarTouchStart}
+                 onTouchMove={onBarTouchMove}
+                 onTouchEnd={onBarTouchEnd}>
                 <div className='dragBar__line'>
-                    <div className='dragBar__pin'
-                         style={pinStyles}
-                         onTouchStart={onBarTouchStart}
-                         onTouchMove={onBarTouchMove}
-                         onTouchEnd={onBarTouchEnd}
-                    />
+                    <div className='dragBar__pin' style={pinStyles}/>
                     <div className='dragBar__value' style={valueStyles}/>
                 </div>
 

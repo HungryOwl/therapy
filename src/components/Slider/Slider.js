@@ -21,7 +21,7 @@ class Slider extends Swipable {
         this.sliderContent = {
             0: <Goals/>,
             1: <Therapy/>,
-            2: <BarSlider initialPage={2} sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
+            2: <BarSlider initialPage={0} sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
         };
     }
 
