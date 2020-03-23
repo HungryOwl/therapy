@@ -1,41 +1,3 @@
-export const arrows = [
-    [
-        {
-            length: 60,
-            shiftX: 50,
-            shiftY: 10
-        }
-    ],
-    [
-        {
-            length: 190,
-            deg: 40,
-            shiftX: 50,
-            shiftY: -14
-        },
-        {
-            length: 190,
-            deg: 140,
-            shiftX: 50,
-            shiftY: 14
-        },
-        {
-            length: 58,
-            deg: 90,
-            shiftX: 50,
-            shiftY: 0
-        }
-    ],
-    [
-        {
-            length: 60,
-            deg: -180,
-            shiftX: 50,
-            shiftY: -7
-        }
-    ]
-];
-
 export const chainLinks = {
     muscle: {
         layout: 'column-reverse',
@@ -45,7 +7,7 @@ export const chainLinks = {
         text: 'Мышцы',
         index: 2,
         img: 'muscle',
-        arrows: arrows[0]
+        arrows: [{ length: 60, shiftX: 50, shiftY: 10 }]
     },
     symbolB: {
         layout: 'column-reverse',
@@ -56,7 +18,11 @@ export const chainLinks = {
         index: 1,
         img: 'symbolβ',
         symbol: 'β',
-        arrows: arrows[1]
+        arrows: [
+            { length: 190, deg: 40, shiftX: 50, shiftY: -14 },
+            { length: 190, deg: 140, shiftX: 50, shiftY: 14 },
+            { length: 58, deg: 90, shiftX: 50, shiftY: 0 }
+        ]
     },
     liver: {
         layout: 'column-reverse',
@@ -66,6 +32,6 @@ export const chainLinks = {
         text: 'Печень',
         index: 3,
         img: 'liver',
-        arrows: arrows[2]
+        arrows: [{ length: 60, deg: -180, shiftX: 50, shiftY: -7 }]
     }
 };

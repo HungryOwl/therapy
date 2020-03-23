@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ChainLink from "../ChainLink/ChainLink";
-import { chainLinks } from "./Pathogenesis2009-data";
+import ChainLink from '../ChainLink/ChainLink';
+import { chainLinks } from './Pathogenesis2009-data';
 
 class Pathogenesis2009 extends Component {
     constructor(props) {

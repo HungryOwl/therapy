@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChainLink from '../ChainLink/ChainLink';
 import Arrow from '../Arrow/Arrow';
 import ArrowedText from '../ArrowedText/ArrowedText';
-import { chainLinks, arrows } from "./Pathogenesis2016-data";
+import { chainLinks, arrows } from './Pathogenesis2016-data';
 
 class Pathogenesis2016 extends Component {
     constructor(props) {
