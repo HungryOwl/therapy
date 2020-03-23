@@ -19,7 +19,6 @@ class BarSlider extends Component {
         this.pageRange = new ValueRange(0, this.sliderClasses.length - 1);
         this.pinCoordsRange = new ValueRange(0, this.barWidth);
 
-        this.pinNode = null;
         this.barClientX = null;
 
         this.state = {
@@ -42,7 +41,9 @@ class BarSlider extends Component {
 
             // Расстояние, которое нужно пройти объекту анимации
             distance: 0
-        }
+        };
+
+        console.log(this);
     }
 
     get currentPage() {
@@ -54,16 +55,12 @@ class BarSlider extends Component {
         return this.pinCoordsRange.max / this.pageRange.max;
     }
 
-    // @TODO эти методы нужно отрефакторить и убрать ошибку, вызванную реализацией и this.pinNode = null;
+    // @TODO эти методы нужно отрефакторить;
     onBarTouchStart = (evt) => {
         let touchObj = evt.changedTouches[0];
         this.startX = touchObj.clientX;
 
-        if (evt.target.className === 'dragBar__pin') {
-            this.pinNode = evt.target;
-        }
-
-        if (evt.target.className === 'dragBar__line') {
+        if (evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value') {
             this.barClientX = (this.barClientX) ? this.barClientX : evt.currentTarget.getBoundingClientRect().x;
             let pinCoord = this.startX - this.barClientX;
             this.setState({ pinCoord });
@@ -79,7 +76,7 @@ class BarSlider extends Component {
             pinCoord = this.pinCoordsRange.limit(touchObj.target.offsetLeft - shiftX);
         }
 
-        if (evt.target.className === 'dragBar__line') {
+        if (evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value') {
             let pinCoord = this.pinCoordsRange.limit(this.startX - evt.currentTarget.getBoundingClientRect().x - shiftX);
         }
 
@@ -96,8 +93,8 @@ class BarSlider extends Component {
             currentPinCoord = touchObj.target.offsetLeft;
         }
 
-        if (evt.target.className === 'dragBar__line') {
-            currentPinCoord = this.pinNode.offsetLeft;
+        if (evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value') {
+            currentPinCoord = this.state.pinCoord;
         }
 
         let resultPage = Math.round(currentPinCoord / this.pageDistance);
@@ -106,7 +103,7 @@ class BarSlider extends Component {
         this.options.distance = currentPinCoord - resultPinCoord;
         this.options.initialPinCoord = currentPinCoord;
 
-        if (evt.target.className === 'dragBar__line') {
+        if (evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value') {
             this.setState({ currentPage: resultPage });
         }
 
