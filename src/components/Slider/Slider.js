@@ -21,7 +21,7 @@ class Slider extends Swipable {
         this.sliderContent = {
             0: <Goals/>,
             1: <Therapy/>,
-            2: <BarSlider initialPage={0} sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
+            2: <BarSlider initialPage={2} sliderClasses={['1988', '2009', '2016']} barWidth={640}/>
         };
     }
 
@@ -70,7 +70,7 @@ class Slider extends Swipable {
                 </div>
                 {this.renderSwipedown()}
                 <Pagination amount={this.pageRange.max + 1} activeNumber={this.state.currentPage} onClick={this.onPaginationItemClick}/>
-                <Navigation minutes={59}/>
+                <Navigation minutes={1}/>
             </div>
         );
     }
