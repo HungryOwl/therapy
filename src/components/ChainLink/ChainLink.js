@@ -52,18 +52,16 @@ class ChainLink extends Component {
     }
 
     render() {
-        const isImage = this.props.img || this.props.symbol;
-        const hasArrow = this.props.arrow;
+        const hasImage = this.props.img || this.props.symbol;
         const hasArrows = this.props.arrows && this.props.arrows.length;
-        const hasTArrow = this.props.tArrow;
         const hasTArrows = this.props.tArrows && this.props.tArrows.length;
 
         return (
             <article className={this.chainLinkClasses}>
                 <div className={this.boxClasses}>
-                    {isImage && <div className='chainLink__image'>
+                    {hasImage && <div className='chainLink__image'>
                         {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
-                        {hasArrow && this.renderArrow(this.props.arrow)}
+                        {this.props.arrow && this.renderArrow(this.props.arrow)}
                         {hasArrows && this.renderArrows(this.props.arrows)}
                     </div>}
 
@@ -71,7 +69,7 @@ class ChainLink extends Component {
                         {this.props.index && <div className='chainLink__index'>{this.props.index}</div>}
                         {this.props.text && <div className='chainLink__text'>{this.props.text}</div>}
                         {this.props.innerText && <div dangerouslySetInnerHTML={{__html: this.props.innerText}} className='chainLink__text'/>}
-                        {hasTArrow && this.renderArrow(this.props.tArrow)}
+                        {this.props.tArrow && this.renderArrow(this.props.tArrow)}
                         {hasTArrows && this.renderArrows(this.props.tArrows)}
                     </div>
                 </div>
