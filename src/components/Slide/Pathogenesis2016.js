@@ -29,11 +29,11 @@ class Pathogenesis2016 extends Component {
 
                 <section className='hyperglycemia__column w-half'>
                     <ChainLink {...chainLinks.cellDefect}/>
-                    <ArrowedText text='↑&nbsp;глюкагон' classes='hyperglycemia__text hyperglycemia__text--glucagon' arrows={arrows.glukagon}/>
+                    <ArrowedText text='↑&nbsp;глюкагон' classes='hyperglycemia__text hyperglycemia__text--glucagon' arrow={arrows.glukagon}/>
                 </section>
             </div>
 
-            <ArrowedText text='Гипергликемия' classes='hyperglycemia__text hyperglycemia__text--huge' arrows={arrows.glycemia}/>
+            <ArrowedText text='Гипергликемия' classes='hyperglycemia__text hyperglycemia__text--huge' arrow={arrows.glycemia}/>
             <ChainLink {...chainLinks.kidneys}/>
         </div>;
     }

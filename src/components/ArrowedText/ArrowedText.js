@@ -6,6 +6,10 @@ class ArrowedText extends Component {
         super(props);
     }
 
+    renderArrow(arrowOpts) {
+        return <Arrow {...arrowOpts}/>;
+    }
+
     renderArrows(arrowsArr) {
         return arrowsArr.map((options, i) => <Arrow {...options} key={i}/>)
     }
@@ -14,7 +18,8 @@ class ArrowedText extends Component {
         return (
             <div className={this.props.classes}>
                 <span>{this.props.text}</span>
-                {this.renderArrows(this.props.arrows)}
+                {this.props.arrow && this.renderArrow(this.props.arrow)}
+                {this.props.arrows && this.renderArrows(this.props.arrows)}
             </div>
         );
     }

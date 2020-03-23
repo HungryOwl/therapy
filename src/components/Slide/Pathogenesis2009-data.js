@@ -12,7 +12,7 @@ export const chainLinks = {
         innerText: 'Инкретиновый <br/> эффект',
         modificators: 'small',
         symbol: 2,
-        arrows: [mainArrows.down]
+        arrow: mainArrows.down
 
     },
     symbolB: {
@@ -25,7 +25,7 @@ export const chainLinks = {
         img: 'symbolβ',
         modificators: 'small',
         symbol: 'β',
-        arrows: [mainArrows.down]
+        arrow: mainArrows.down
     },
     cellDefect: {
         layout: 'row',
@@ -33,7 +33,7 @@ export const chainLinks = {
         innerText: 'Дефект <br/> α-клеток',
         modificators: 'small',
         symbol: 3,
-        arrows: [mainArrows.down]
+        arrow: mainArrows.down
     },
     kidneys: {
         layout: 'row-reverse',
@@ -44,7 +44,7 @@ export const chainLinks = {
         img: 'kidneys',
         modificators: 'small',
         index: 8,
-        arrows: [mainArrows.right]
+        arrow: mainArrows.right
     },
     lipid: {
         layout: 'row',
@@ -55,7 +55,7 @@ export const chainLinks = {
         img: 'lipid',
         modificators: 'small',
         index: 4,
-        arrows: [mainArrows.left]
+        arrow: mainArrows.left
     },
     brain: {
         layout: 'column',
@@ -66,7 +66,7 @@ export const chainLinks = {
         img: 'brain',
         modificators: 'small',
         index: 7,
-        arrows: [mainArrows.up]
+        arrow: mainArrows.up
     },
     liver: {
         layout: 'column',
@@ -77,7 +77,7 @@ export const chainLinks = {
         img: 'liver',
         modificators: 'small',
         index: 6,
-        arrows: [mainArrows.up]
+        arrow: mainArrows.up
     },
     muscle: {
         layout: 'column',
@@ -88,6 +88,6 @@ export const chainLinks = {
         img: 'muscle',
         modificators: 'small',
         index: 5,
-        arrows: [mainArrows.up]
+        arrow: mainArrows.up
     }
 };

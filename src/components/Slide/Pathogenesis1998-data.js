@@ -7,7 +7,7 @@ export const chainLinks = {
         text: 'Мышцы',
         index: 2,
         img: 'muscle',
-        arrows: [{ length: 60, shiftX: 50, shiftY: 10 }]
+        arrow: { length: 60, shiftX: 50, shiftY: 10 }
     },
     symbolB: {
         layout: 'column-reverse',
@@ -32,6 +32,6 @@ export const chainLinks = {
         text: 'Печень',
         index: 3,
         img: 'liver',
-        arrows: [{ length: 60, deg: -180, shiftX: 50, shiftY: -7 }]
+        arrow: { length: 60, deg: -180, shiftX: 50, shiftY: -7 }
     }
 };

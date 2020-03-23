@@ -7,6 +7,10 @@ class ChainLink extends Component {
         super(props);
     }
 
+    renderArrow(arrowOpts) {
+        return <Arrow {...arrowOpts}/>;
+    }
+
     renderArrows(arrowsArr) {
         return arrowsArr.map((options, i) => <Arrow {...options} key={i}/>)
     }
@@ -49,22 +53,26 @@ class ChainLink extends Component {
 
     render() {
         const isImage = this.props.img || this.props.symbol;
-        const isArrows = this.props.arrows && this.props.arrows.length;
-        const isTArrows = this.props.tArrows && this.props.tArrows.length;
+        const hasArrow = this.props.arrow;
+        const hasArrows = this.props.arrows && this.props.arrows.length;
+        const hasTArrow = this.props.tArrow;
+        const hasTArrows = this.props.tArrows && this.props.tArrows.length;
 
         return (
             <article className={this.chainLinkClasses}>
                 <div className={this.boxClasses}>
                     {isImage && <div className='chainLink__image'>
                         {this.props.symbol && <span className='chainLink__symbol'>{this.props.symbol}</span>}
-                        {isArrows && this.renderArrows(this.props.arrows)}
+                        {hasArrow && this.renderArrow(this.props.arrow)}
+                        {hasArrows && this.renderArrows(this.props.arrows)}
                     </div>}
 
                     <div className={this.contentClasses}>
                         {this.props.index && <div className='chainLink__index'>{this.props.index}</div>}
                         {this.props.text && <div className='chainLink__text'>{this.props.text}</div>}
                         {this.props.innerText && <div dangerouslySetInnerHTML={{__html: this.props.innerText}} className='chainLink__text'/>}
-                        {isTArrows && this.renderArrows(this.props.tArrows)}
+                        {hasTArrow && this.renderArrow(this.props.tArrow)}
+                        {hasTArrows && this.renderArrows(this.props.tArrows)}
                     </div>
                 </div>
             </article>
