@@ -55,42 +55,36 @@ class BarSlider extends Component {
     }
 
     onBarTouchStart = (evt) => {
+        let touchObj = evt.changedTouches[0];
+        this.startX = touchObj.clientX;
+
         if (evt.target.className === 'dragBar__pin') {
-            let touchObj = evt.changedTouches[0];
-            this.startX = touchObj.clientX;
-            console.log('this.startX', this.startX);
             this.pinNode = evt.target;
         }
 
         if (evt.target.className === 'dragBar__line') {
-            let touchObj = evt.changedTouches[0];
-            this.startX = touchObj.clientX;
             this.barClientX = (this.barClientX) ? this.barClientX : evt.currentTarget.getBoundingClientRect().x;
             let pinCoord = this.startX - this.barClientX;
-
             this.setState({ pinCoord });
         }
     };
 
     onBarTouchMove = (evt) => {
-        if (evt.target.className === 'dragBar__pin') {
-            let touchObj = evt.changedTouches[0];
-            let shiftX = this.startX - touchObj.clientX;
-            let pinCoord = this.pinCoordsRange.limit(touchObj.target.offsetLeft - shiftX);
-            let currentPage = Math.round(pinCoord / this.pageDistance);
+        let pinCoord;
+        let touchObj = evt.changedTouches[0];
+        let shiftX = this.startX - touchObj.clientX;
 
-            this.setState({ currentPage, pinCoord });
-            this.startX = touchObj.clientX;
+        if (evt.target.className === 'dragBar__pin') {
+            pinCoord = this.pinCoordsRange.limit(touchObj.target.offsetLeft - shiftX);
         }
 
         if (evt.target.className === 'dragBar__line') {
-            let touchObj = evt.changedTouches[0];
-            let shiftX = this.startX - touchObj.clientX;
             let pinCoord = this.pinCoordsRange.limit(this.startX - evt.currentTarget.getBoundingClientRect().x - shiftX);
-            let currentPage = Math.round(pinCoord / this.pageDistance);
-            this.setState({ currentPage, pinCoord });
-            this.startX = touchObj.clientX;
         }
+
+        let currentPage = Math.round(pinCoord / this.pageDistance);
+        this.setState({ currentPage, pinCoord });
+        this.startX = touchObj.clientX;
     };
 
     onBarTouchEnd = (evt) => {
