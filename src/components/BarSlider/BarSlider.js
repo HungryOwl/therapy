@@ -1,12 +1,13 @@
-import React, {Component} from 'react';
-import {ValueRange} from '../utils'
+import React, { Component } from 'react';
+import { ValueRange } from '../utils'
 import Slide from '../Slide/Slide'
 import DragBar from '../DragBar/DragBar'
 import Pathogenesis1998 from '../Slide/Pathogenesis1998';
 import Pathogenesis2009 from '../Slide/Pathogenesis2009';
 import Animation from '../Animation/animation'
-import {CircAnimation, ReverseAnimation} from '../Animation/animationTypes'
-import Pathogenesis2016 from "../Slide/Pathogenesis2016";
+import { CircAnimation, ReverseAnimation } from '../Animation/animationTypes'
+import Pathogenesis2016 from '../Slide/Pathogenesis2016';
+import BarTouchEvent from './utils'
 
 class BarSlider extends Component {
     constructor(props) {
@@ -19,11 +20,7 @@ class BarSlider extends Component {
         this.pageRange = new ValueRange(0, this.sliderClasses.length - 1);
         this.pinCoordsRange = new ValueRange(0, this.barWidth);
 
-        this.barClientX = null;
-
-        this.state = {
-            pinCoord: this.pageDistance * initialPage
-        };
+        this.state = { pinCoord: this.pageDistance * initialPage };
 
         this.sliderContent = {
             0: <Pathogenesis1998/>,
@@ -59,40 +56,29 @@ class BarSlider extends Component {
         return this.pinCoordsRange.max / this.pageRange.max;
     }
 
-    // @TODO эти методы нужно отрефакторить;
     onBarTouchStart = (evt) => {
-        const touchObj = evt.changedTouches[0];
-        const isClickedOnLine = evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value';
-        this.startX = touchObj.clientX;
+        const barTouchEvent = new BarTouchEvent(evt);
+        this.startX = barTouchEvent.clientX;
 
-        if (isClickedOnLine) {
-            this.barClientX = (this.barClientX) ? this.barClientX : evt.currentTarget.getBoundingClientRect().x;
-            this.pinCoord = this.startX - this.barClientX;
-        }
+        if (barTouchEvent.isClickedOnLine) this.pinCoord = this.startX - barTouchEvent.currentTargetLeft;
     };
 
     onBarTouchMove = (evt) => {
-        const touchObj = evt.changedTouches[0];
-        const shiftX = this.startX - touchObj.clientX;
-        const isClickedOnPin = evt.target.className === 'dragBar__pin';
-        const isClickedOnLine = evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value';
+        const barTouchEvent = new BarTouchEvent(evt);
+        const shiftX = this.startX - barTouchEvent.clientX;
 
-        if (isClickedOnPin) this.pinCoord = touchObj.target.offsetLeft - shiftX;
-        if (isClickedOnLine) this.pinCoord = this.startX - evt.currentTarget.getBoundingClientRect().x - shiftX;
+        if (barTouchEvent.isClickedOnPin) this.pinCoord = barTouchEvent.targetLeft - shiftX;
+        if (barTouchEvent.isClickedOnLine) this.pinCoord = this.startX - barTouchEvent.currentTargetLeft - shiftX;
 
-        this.startX = touchObj.clientX;
+        this.startX = barTouchEvent.clientX;
     };
 
     onBarTouchEnd = (evt) => {
-        const isClickedOnPin = evt.target.className === 'dragBar__pin';
-        const isClickedOnLine = evt.target.className === 'dragBar__line' || evt.target.className === 'dragBar__value';
+        const barTouchEvent = new BarTouchEvent(evt);
 
-        if (isClickedOnPin) {
-            const touchObj = evt.changedTouches[0];
-            this.pinCoord = touchObj.target.offsetLeft;
-        }
+        if (barTouchEvent.isClickedOnPin) this.pinCoord = barTouchEvent.targetLeft;
+        if (barTouchEvent.isClickedOnLine) this.pinCoord = this.state.pinCoord;
 
-        if (isClickedOnLine) this.pinCoord = this.state.pinCoord;
         const targetPinCoord = this.pageDistance * this.currentPage;
 
         this.options.distance = this.pinCoord - targetPinCoord;
